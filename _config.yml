@@ -2,3 +2,6 @@ highlighter: rouge
 
 gems:
   - jekyll-gist
+  
+baseurl: ''
+url: "http://inizio.github.io"
