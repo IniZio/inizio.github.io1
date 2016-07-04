@@ -1,0 +1,404 @@
+---
+layout: default
+title: HTML5+gomobile+android studio
+category: Development
+tags: [html5, gomobile, android]
+description: How to create a searchable post index on a Jekyll site
+---
+<p>
+    Just an idea
+    <a href="https://godoc.org/golang.org/x/mobile/exp/app/debug">
+        <img alt="GoDoc" src="https://godoc.org/golang.org/x/mobile/exp/app/debug?status.svg"/>
+    </a>
+    <button onclick="document.getElementById('gonna').focus();document.getElementById('gonna').select();document.execCommand('copy');" type="btn btn-default">
+    </button>
+</p>
+<div class="row">
+    <textarea cols="50" id="gonna" onclick="this.focus();this.select()" readonly="readonly" rows="10" style="visibility: visible;">
+        this is wt i want
+    </textarea>
+    <div class="col-md-4">
+        {% highlight go%}
+import "fmt"
+func main(){
+fmt.Println("hello world")
+}
+{% endhighlight %}
+    </div>
+    <div class="col-md-4">
+        <!-- {% gist IniZio/dab65a4e52c132cb06e3 %} -->
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+<div class="row">
+    <div class="card card-block col-md-7">
+        <div class="col-md-7">
+            <div class="view overlay hm-white-light z-depth-1-half">
+                <img alt="Mountain View" class="img-fluid" src="/image/front_page.png">
+                    <div class="mask">
+                    </div>
+                </img>
+            </div>
+        </div>
+        <!--Main information-->
+        <div class="col-md-4">
+            <h4 class="h5-responsive">
+                We are professionals
+            </h4>
+            <hr>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis pariatur quod ipsum atque quam dolorem
+                </p>
+                <a class="btn btn-primary waves-effect" href="">
+                    Get it now!
+                </a>
+            </hr>
+        </div>
+    </div>
+</div>
+<hr class="extra-margins">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <!--Card image-->
+                <div class="view overlay hm-white-slight">
+                    <img alt="" class="img-fluid" src="http://mdbootstrap.com/images/regular/city/img%20(4).jpg">
+                        <a href="#">
+                            <div class="mask waves-effect waves-light">
+                            </div>
+                        </a>
+                    </img>
+                </div>
+                <!--/.Card image-->
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">
+                        Card title
+                    </h4>
+                    <!--Text-->
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </p>
+                    <a class="btn btn-primary waves-effect waves-light" href="#">
+                        Read more
+                    </a>
+                </div>
+                <!--/.Card content-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!--Carousel Wrapper-->
+            <div class="carousel slide carousel-multi-item wow fadeIn" data-ride="carousel" id="multi-item-example">
+                <!--Controls-->
+                <div class="controls-top">
+                    <a class="btn-floating btn-small mdb-color" data-slide="prev" href="#multi-item-example">
+                        <i class="fa fa-chevron-left">
+                        </i>
+                    </a>
+                    <a class="btn-floating btn-small mdb-color" data-slide="next" href="#multi-item-example">
+                        <i class="fa fa-chevron-right">
+                        </i>
+                    </a>
+                </div>
+                <!--/.Controls-->
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                    <li class="active" data-slide-to="0" data-target="#multi-item-example">
+                    </li>
+                    <li data-slide-to="1" data-target="#multi-item-example">
+                    </li>
+                    <li data-slide-to="2" data-target="#multi-item-example">
+                    </li>
+                </ol>
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    <!--First slide-->
+                    <div class="carousel-item active">
+                        <div class="col-md-4">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up green lighten-1">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        <div class="col-md-4 hidden-sm-down">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up green darken-2">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-2.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        <div class="col-md-4 hidden-sm-down">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up green darken-4">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                    </div>
+                    <!--/.First slide-->
+                    <!--Second slide-->
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up blue lighten-1">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        <div class="col-md-4 hidden-sm-down">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up blue darken-2">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        <div class="col-md-4 hidden-sm-down">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up blue darken-4">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-3.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                    </div>
+                    <!--/.Second slide-->
+                    <!--Third slide-->
+                    <div class="carousel-item">
+                        <div class="col-md-4">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up indigo lighten-1">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        <div class="col-md-4 hidden-sm-down">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up indigo darken-1">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        <div class="col-md-4 hidden-sm-down">
+                            <!--Card-->
+                            <div class="card testimonial-card">
+                                <!--Bacground color-->
+                                <div class="card-up indigo darken-4">
+                                </div>
+                                <!--Avatar-->
+                                <div class="avatar">
+                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg">
+                                    </img>
+                                </div>
+                                <div class="card-block">
+                                    <!--Name-->
+                                    <h4 class="card-title">
+                                        Anna Doe
+                                    </h4>
+                                    <hr>
+                                        <!--Quotation-->
+                                        <p>
+                                            <i class="fa fa-quote-left">
+                                            </i>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
+                                        </p>
+                                    </hr>
+                                </div>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                    </div>
+                    <!--/.Third slide-->
+                </div>
+                <!--/.Slides-->
+            </div>
+            <!--/.Carousel Wrapper-->
+        </div>
+    </div>
+    <div id="embedded-feed" style="height:800px;width:400px;"></div>
+<script type="text/javascript" src="https://s0.assets-yammer.com/assets/platform_embed.js"></script>
+<script type="text/javascript">
+yam.connect.embedFeed({
+  container: "#embedded-feed",
+  network: "digitalfree.onmicrosoft.com",
+  feedType: "group",
+  feedId: "8346761"
+});
+</script>
+
+    <p>
+        {{ page.date | date_to_string }}
+    </p>
+</hr>

@@ -4,4 +4,4 @@ gems:
   - jekyll-gist
   
 baseurl: ''
-url: "http://inizio.github.io"
+title: 'IniZio'

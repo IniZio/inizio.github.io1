@@ -1,0 +1,170 @@
+<!--Footer-->
+<footer>
+    <!-- <div class="col-lg-4 col-lg-offset-4">
+        <div class="cuadro_intro_hover">
+            <div class="caption">
+                <div class="blur">
+                </div>
+                <div class="caption-text">
+                    <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">
+                        Share
+                    </h3>
+                    <p>
+                        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=inizio.gitlab.io/{{page.url}}" target="_blank" title="Share on Facebook">
+                            <i class="fa fa-facebook">
+                            </i>
+                        </a>
+                        <a class="btn btn-googleplus" href="https://plus.google.com/share?url=inizio.gitlab.io/{{page.url}}" target="_blank" title="Share on Google+">
+                            <i class="fa fa-google-plus">
+                            </i>
+                        </a>
+                        <a class="btn btn-reddit" href="http://reddit.com/submit?url=inizio.gitlab.io/{{page.url}}" target="_blank" title="Share on Reddit">
+                            <i class="fa fa-reddit fa-fw">
+                            </i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- card approach -->
+    <div class="col-md-2 col-md-offset-1 text-xs-center wow slideInUp" style="position: fixed;bottom: 0;">
+        <div class="text-center">
+            <!-- <a class="btn btn-social-icon btn-bitbucket"><i class="fa fa-bitbucket"></i></a> -->
+            <!-- <a class="btn btn-social-icon btn-dropbox"><i class="fa fa-dropbox"></i></a> -->
+            <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=inizio.gitlab.io/{{page.url}}" target="_blank" title="Share this page on Facebook">
+                <i class="fa fa-facebook">
+                </i>
+            </a>
+            <!-- <a class="btn btn-social-icon btn-flickr"><i class="fa fa-flickr"></i></a> -->
+            <!-- <a class="btn btn-social-icon btn-github"><i class="fa fa-github"></i></a> -->
+            <a class="btn btn-social-icon btn-google-plus" href="https://plus.google.com/share?url=inizio.gitlab.io/{{page.url}}" target="_blank" title="Share this page on Google+">
+                <i class="fa fa-google-plus">
+                </i>
+            </a>
+            <a class="btn btn-social-icon btn-reddit" href="http://reddit.com/submit?url=inizio.gitlab.io/{{page.url}}" target="_blank" title="Share this page on Reddit">
+                <i class="fa fa-reddit">
+                </i>
+            </a>
+            <!-- <a class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a> -->
+            <!-- <a class="btn btn-social-icon btn-linkedin"><i class="fa fa-linkedin"></i></a> -->
+            <!-- <a class="btn btn-social-icon btn-pinterest"><i class="fa fa-pinterest"></i></a> -->
+            <!-- <a class="btn btn-social-icon btn-tumblr"><i class="fa fa-tumblr"></i></a> -->
+            <!-- <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a> -->
+            <!-- <a class="btn btn-social-icon btn-vk"><i class="fa fa-vk"></i></a> -->
+        </div>
+    </div>
+</footer>
+<!--/.Footer-->
+<!-- JQuery -->
+<script src="/js/jquery-2.2.3.min.js" type="text/javascript">
+</script>
+<!-- Bootstrap tooltips -->
+<script src="/js/tether.min.js" type="text/javascript">
+</script>
+<!-- Bootstrap core JavaScript -->
+<script src="/js/bootstrap.min.js" type="text/javascript">
+</script>
+<!-- MDB core JavaScript -->
+<!-- <script src="/js/mdb.min.js" type="text/javascript">
+</script> -->
+<script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript">
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script>
+    $('#myTabs').bind('show', function(e) {  
+    paneID = $(e.target).attr('href');
+    src = $(paneID).attr('data-src');
+    // if the iframe hasn't already been loaded once
+    if($(paneID+" iframe").attr("src")=="")
+    {
+        $(paneID+" iframe").attr("src",src);
+    }
+});
+</script>
+<script>
+    (function(window, document, undefined) {
+    'use strict';
+
+    // Search page URL without leading slash
+    var SEARCH_PATH = 'search.html';
+
+    var ready = function(fn) {
+      if (document.readyState != 'loading'){
+        fn();
+      } else {
+        document.addEventListener('DOMContentLoaded', fn);
+      }
+    }
+
+    // Return an object of `key: value` pairs from the GET search string
+    var parseSearchParameters = function(search) {
+      var ret = {},
+          // Each key-value pair is separated with an ampersand
+          params = search.split('&'),
+          i, kv;
+      for (i = 0; i < params.length; i++) {
+        // Keys are separated from values with an equals sign
+        var kv = params[i].split('=');
+        ret[kv[0]] = kv[1];
+      };
+
+      return ret;
+    };
+
+    // Only display posts on the search page that match the query
+    var filterPosts = function(categoriesContainer, tagsContainer) {
+      var params = parseSearchParameters(window.location.search.slice(1)),
+          hasTag = params.tags !== undefined,
+          hasCategory = params.category !== undefined,
+          children, child, searchTerm, i;
+
+
+      // 0 or more than 1 search terms were specified
+      if ((!hasTag && !hasCategory) || hasTag && hasCategory) {
+        tagsContainer.style.display = 'none';
+        categoriesContainer.style.display = 'block';
+        return;
+      }
+
+      // If we're here, there's only one search term
+      if (hasCategory) {
+        tagsContainer.style.display = 'none';
+        categoriesContainer.style.display = 'block';
+        children = categoriesContainer.children;
+        searchTerm = decodeURI(params.category);
+      }
+      if (hasTag) {
+        tagsContainer.style.display = 'block';
+        categoriesContainer.style.display = 'none';
+        children = tagsContainer.children;
+        searchTerm = decodeURI(params.tags);
+      }
+
+      for (i = 0; i < children.length; i++) {
+        child = children[i];
+        child.style.display = decodeURI(child.dataset.name) === searchTerm ? 'display' : 'none';
+      };
+    };
+
+    ready(function() {
+      // If we're on the search page, get the index containers and filter them
+      // based on the GET query
+      if (window.location.pathname.slice(-SEARCH_PATH.length) === SEARCH_PATH) {
+        var tagsContainer = document.querySelectorAll('.tag-index'),
+            categoriesContainer = document.querySelectorAll('.category-index');
+
+        // We need both containers for the method to work
+        if (!tagsContainer.length !== 1 || categoriesContainer.length !== 1) {
+
+          filterPosts(categoriesContainer[0], tagsContainer[0]);
+        }
+      }
+    });
+  })(window, window.document);
+</script>
+<!--         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js">
+    </script> -->

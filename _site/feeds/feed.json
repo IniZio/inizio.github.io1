@@ -1,0 +1,99 @@
+
+[
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+
+
+    
+    {
+        "title": "Create gitlab pages with jekyll",
+        "content": "\n",
+        "link": "/experience/2016/05/21/gitlab-pages-with-jekyll.html",
+        "date": "2016-05-21 00:00:00 +0800",
+        "excerpt": "",
+        "search_omit": ""
+    }
+    
+    
+
+    
+    ,{
+        "title": "HTML5+gomobile+android studio",
+        "content": "\n    Just an idea\n    \n        \n    \n\n\n    \n        import \"fmt\"\nfunc main(){\nfmt.Println(\"hello world\")\n}\n    \n    \n        \n    \n    \n    \n\n\n    \n        \n            \n                \n                    \n                    \n                \n            \n        \n        \n        \n            \n                We are professionals\n            \n            \n                \n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis pariatur quod ipsum atque quam dolorem\n                \n                \n                    Get it now!\n                \n            \n        \n    \n\n\n\n&lt;div class=\"row\"&gt;\n    &lt;div class=\"col-md-4\"&gt;\n        &lt;div class=\"card\"&gt;\n            &lt;!--Card image--&gt;\n            &lt;div class=\"view overlay hm-white-slight\"&gt;\n                &lt;img alt=\"\" class=\"img-fluid\" src=\"http://mdbootstrap.com/images/regular/city/img%20(4).jpg\"&gt;\n                    &lt;a href=\"#\"&gt;\n                        &lt;div class=\"mask waves-effect waves-light\"&gt;\n                        &lt;/div&gt;\n                    &lt;/a&gt;\n                &lt;/img&gt;\n            &lt;/div&gt;\n            &lt;!--/.Card image--&gt;\n            &lt;!--Card content--&gt;\n            &lt;div class=\"card-block\"&gt;\n                &lt;!--Title--&gt;\n                &lt;h4 class=\"card-title\"&gt;\n                    Card title\n                &lt;/h4&gt;\n                &lt;!--Text--&gt;\n                &lt;p class=\"card-text\"&gt;\n                    Some quick example text to build on the card title and make up the bulk of the card's content.\n                &lt;/p&gt;\n                &lt;a class=\"btn btn-primary waves-effect waves-light\" href=\"#\"&gt;\n                    Read more\n                &lt;/a&gt;\n            &lt;/div&gt;\n            &lt;!--/.Card content--&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n&lt;/div&gt;\n&lt;p&gt;\n    23 Nov 2015\n&lt;/p&gt;\n\n\n&lt;/hr&gt;\n",
+        "link": "/experience/2015/11/23/gomobile-html5-native-app.html",
+        "date": "2015-11-23 00:00:00 +0800",
+        "excerpt": "",
+        "search_omit": ""
+    }
+    
+    
+
+    
+    ,{
+        "title": "你好，世界",
+        "content": "你好，世界\n我的第一篇文章\n16 Nov 2015\n",
+        "link": "/2015/11/16/hello-world.html",
+        "date": "2015-11-16 00:00:00 +0800",
+        "excerpt": "",
+        "search_omit": ""
+    }
+    
+    
+
+
+
+    
+
+    
+    ,{
+        "title": "Search",
+        "content": "  Search\n  \n  \n  \n    Search term\n    \n    \n  \n\n  \n  \n     result(s) found for &ldquo;&rdquo;.\n  \n  \n\n\n\n  \n  \n\n  \n  \n\n  \n  \n",
+        "link": "/search/",
+        "date": null,
+        "excerpt": null,
+        "search_omit": "true"
+    }
+    
+    
+
+    
+    ,{
+        "title": "IniZio BLoG",
+        "content": "\n    最新文章\n\n\n\n\n    \n    \n        \n            \n                {% for post in site.posts %}\n                \n                    \n                        \n                            \n                                \n                                    \n                                \n                            \n                            \n                                \n                                    \n                                        \n                                            \n                                                {{ post.title }}\n                                            \n                                        \n                                    \n                                    \n                                    \t{{ post.category | tag_links }}\n                                    \n                                \n                                \n                                    \n                                        \n                                        \n                                            \n                                                {{ post.date | date_to_string }}\n                                            \n                                        \n                                        \n                                            \n                                                by\n                                            \n                                            \n                                                \n                                                    IniZio\n                                                \n                                            \n                                        \n                                    \n                                \n                            \n                        \n                        \n                            {{ post.excerpt }}\n                        \n                    \n                \n                {% endfor %}\n            \n        \n    \n    \n",
+        "link": "/",
+        "date": null,
+        "excerpt": null,
+        "search_omit": ""
+    }
+    
+    
+
+    
+    ,{
+        "title": "Search",
+        "content": "{% comment %}\nThis is the \"search page\". When a user hits `/search?category=foobar`, a little\npiece of JavaScript hides everything on this page that doesn't have a category\nof `foobar`. Likewise for `/search?tag=foobar`.\n\nIt's a pretty stupid way of doing things because everything is always visible\nin the DOM, but whatever, I don't care about SEO here.\n\nIt relies on any links to this page either having a `tag` or a `category` key,\nwith a value that's been escaped with the Liquid `escape` filter, such that the\nescape names on this page match those in the URL.\n{% endcomment %}\n\n  {% for category in site.categories %}\n    {% assign nposts = category | last | size %}\n    \n      \n        {{ category | first }}\n        {{ nposts }} post{% if nposts != 1 %}s{% endif %}\n      \n      \n        {% for posts in category %}\n          {% for post in posts %}\n            {% comment %}\n            I'm not sure why I need to check for the title, I think because the\n            category is itself part of the posts list for some reason.\n            {% endcomment %}\n            {% if post.title %}\n              {{ post.title }}\n            {% endif %}\n          {% endfor %}\n        {% endfor %}\n      \n    \n  {% endfor %}\n\n\n{% comment %}This is the same as above, just looping over tags{% endcomment %}\n\n  {% for tag in site.tags %}\n    {% assign nposts = tag | last | size %}\n    \n      \n        {{ tag | first }}\n        {{ nposts }} post{% if nposts != 1 %}s{% endif %}\n      \n      \n        {% for posts in tag %}\n          {% for post in posts %}\n            {% comment %}\n            I'm not sure why I need to check for the title, I think because the\n            tag is itself part of the posts list for some reason.\n            {% endcomment %}\n            {% if post.title %}\n              {{ post.title }}\n            {% endif %}\n          {% endfor %}\n        {% endfor %}\n      \n    \n  {% endfor %}\n",
+        "link": "/search.html",
+        "date": null,
+        "excerpt": null,
+        "search_omit": ""
+    }
+    
+    
+
+]

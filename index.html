@@ -1,11 +1,59 @@
 ---
 layout: default
-title: inizio blog
+title: IniZio BLoG
 ---
-<h2>{{ page.title }}</h2>
-<p>最新文章</p>
-<ul>
-　{% for post in site.posts %}
-　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-　{% endfor %}
-</ul>
+<!-- Full Width Image Header -->
+<!-- Page Content -->
+<div class="qa-post-list" id="wallposts">
+    {% for post in site.posts %}
+    <div class="post-item" id="m16">
+        <div class="post-inner">
+            <div class="post-head clearfix">
+                <div class="avatar pull-left">
+                    <a href="#">
+                        <img class="post-img" src="/image/Artfill_logo.png"/>
+                    </a>
+                </div>
+                <div class="user-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="handle">
+                                <a href="{{ site.baseurl }}{{ post.url }}">
+                                    {{ post.title }}
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="col-md-4 text-xs-right">
+                            <a href="search.html?category={{ post.category | tag_links }}">{{ post.category | tag_links }}</a>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <div class="asker-meta">
+                            <!-- <span class="qa-post-what">
+                                        </span> -->
+                            <span class="qa-post-when">
+                                <span class="qa-post-when-data">
+                                    {{ post.date | date_to_string }}
+                                </span>
+                            </span>
+                            <span class="qa-post-who">
+                                <span class="qa-post-who-pad">
+                                    by
+                                </span>
+                                <span class="qa-post-who-data">
+                                    <a href="#">
+                                        IniZio
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qa-post-content" style="text-overflow: ellipsis;overflow:hidden;max-height: 100px;">
+                {{ post.excerpt }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

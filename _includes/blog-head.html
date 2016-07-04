@@ -1,9 +1,31 @@
+	<head>
+	    <meta charset="utf-8"/>
+	    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+	    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+	    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-		<!-- Bootstrap core CSS -->
-		<link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
-		<!-- Material Design Bootstrap -->
-		<link href="{{ site.baseurl }}/css/mdb.min.css" rel="stylesheet">
-		<!-- Your custom styles (optional) -->
-		<link href="{{ site.baseurl }}/css/style.css" rel="stylesheet">
+	    <title>
+	        {% if page.title %}{{ page.title | escape }} - {% endif %}{{ site.title | escape }}
+	    </title>
+	    <!--[if !IE 7]>
+			<style type="text/css">
+				#wrap {display:table;height:100%}
+			</style>
+		<![endif]-->
+	    <!-- Font Awesome -->
+	    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet"/>
+	    <!-- Bootstrap core CSS -->
+	    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+	    <!-- Material Design Bootstrap -->
+	    <link href="/css/mdb.min.css" rel="stylesheet"/>
+	    <!-- Your custom styles (optional) -->
+	   
+	    <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css" rel="stylesheet"/> -->
+	    <link href="/css/syntax.css" rel="stylesheet"/>
+	    
+	    <link href="/css/animate.min.css" rel="stylesheet"/>
+	    <!-- <link rel="stylesheet" type="text/css" href="/css/spectre.min.css"> -->
+	    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+	    <link href="/css/social-sharing.css" rel="stylesheet"/>
+	    <link href="/css/style.css" rel="stylesheet"/>
+	</head>
