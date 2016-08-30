@@ -12,7 +12,7 @@ Uses Npm, Typescript, Angular2, Webpack
 # Npm and typings
 Install Nodejs, NPM from official website. [NodeJs](https://nodejs.org/)
 
-Open a new folder, run: `npm init`.
+Open a new folder, run: `npm init`
 
 ```
 .
@@ -21,12 +21,14 @@ package.json
 
 # Angular2
 Install some @angular files:
-```console
+
+```
 $ npm i -S @angular/common @angular/compiler @angular/core @angular/forms @angular/http @angular/platform-browser @angular/platform-browser-dynamic @angular/platform-server @angular/router
 ```
 
 # Webpack
 Install webpack and webpack-dev-server:
+
 ```
 $ npm i -D webpack webpack-dev-server webpack-merge
 ```
