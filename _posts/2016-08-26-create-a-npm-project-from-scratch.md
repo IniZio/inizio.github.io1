@@ -21,13 +21,13 @@ package.json
 
 # Angular2
 Install some @angular files:
-```sh
+```
 $ npm i -S @angular/common @angular/compiler @angular/core @angular/forms @angular/http @angular/platform-browser @angular/platform-browser-dynamic @angular/platform-server @angular/router
 ```
 
 # Webpack
 Install webpack and webpack-dev-server:
-```sh
+```
 $ npm i -D webpack webpack-dev-server webpack-merge
 ```
 | Loader   | Function|
