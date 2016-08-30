@@ -32,7 +32,8 @@ Install webpack and webpack-dev-server:
 ```
 $ npm i -D webpack webpack-dev-server webpack-merge
 ```
-| Loader   | Function|
+
+|Loader| Function|
 |:-|:-|
 |Webpack| Build tool that treats each file processing as loaders instead of pipes or tasks|
 |Webpack-dev-server| a webpack server for hosting the project on localhost to debug|
