@@ -2,6 +2,7 @@ highlighter: rouge
 
 gems:
   - jekyll-gist
-  
+
 baseurl: ''
 title: 'IniZio'
+markdown: redcarpet
