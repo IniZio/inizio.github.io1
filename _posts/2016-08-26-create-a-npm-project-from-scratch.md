@@ -2,6 +2,7 @@
 title: Create a NPM project from scratch (I)
 date: '2016-08-26 08:08:00'
 layout: default
+Category: Development
 ---
 Uses Npm, Typescript, Angular2, Webpack
 

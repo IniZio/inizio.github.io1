@@ -64,13 +64,384 @@
                     <div class="row">
                         <div class="col-md-8">
                             <h4 class="handle">
+                                <a href="/study/2016/09/01/.html">
+                                    2016-09-01
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="col-md-4 text-xs-right">
+                            <a href="search.html?category=Study">Study</a>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <div class="asker-meta">
+                            <!-- <span class="qa-post-what">
+                                        </span> -->
+                            <span class="qa-post-when">
+                                <span class="qa-post-when-data">
+                                    01 Sep 2016
+                                </span>
+                            </span>
+                            <span class="qa-post-who">
+                                <span class="qa-post-who-pad">
+                                    by
+                                </span>
+                                <span class="qa-post-who-data">
+                                    <a href="#">
+                                        IniZio
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qa-post-content" style="text-overflow: ellipsis;overflow:hidden;max-height: 100px;">
+                <ul class="nav nav-tabs">
+    <li class="active">
+        <a href="https://drive.google.com/open?id=1exRPi-KsfZQGxmxoC11JCZNp84NbC9ErbFj5YWrURfM">
+            Comp 2611
+        </a>
+    </li>
+    <li>
+        <a href="https://drive.google.com/open?id=1GpmbhrVYfZS8Ev2RX_vid7-5wr-iZHI6wecP9plUx3E">
+            Comp 2711
+        </a>
+    </li>
+    <li>
+        <a href="https://drive.google.com/open?id=1UKXYN9zYAjOSyLKCAqY04cO3MeDTGAlzOug2QwCBEOM">
+            Math 2111
+        </a>
+    </li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="post-item" id="m16">
+        <div class="post-inner">
+            <div class="post-head clearfix">
+                <div class="avatar pull-left">
+                    <a href="#">
+                        <img class="post-img" src="/image/Artfill_logo.png"/>
+                    </a>
+                </div>
+                <div class="user-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="handle">
+                                <a href="/2016/08/26/create-a-npm-project-from-scratch.html">
+                                    Create a NPM project from scratch (I)
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="col-md-4 text-xs-right">
+                            <a href="search.html?category="></a>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <div class="asker-meta">
+                            <!-- <span class="qa-post-what">
+                                        </span> -->
+                            <span class="qa-post-when">
+                                <span class="qa-post-when-data">
+                                    26 Aug 2016
+                                </span>
+                            </span>
+                            <span class="qa-post-who">
+                                <span class="qa-post-who-pad">
+                                    by
+                                </span>
+                                <span class="qa-post-who-data">
+                                    <a href="#">
+                                        IniZio
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qa-post-content" style="text-overflow: ellipsis;overflow:hidden;max-height: 100px;">
+                <p>Uses Npm, Typescript, Angular2, Webpack</p>
+
+<h1>Stuff I not sure about:</h1>
+
+<ul>
+<li>I think npm devdependencies are stuff that are used during developing and compiling the codes, while dependencies are for running the website?</li>
+</ul>
+
+<h1>Npm and typings</h1>
+
+<p>Install Nodejs, NPM from official website. <a href="https://nodejs.org/">NodeJs</a></p>
+
+<p>Open a new folder, run: <code>npm init</code></p>
+<div class="highlight"><pre><code class="language-" data-lang="">.
+package.json
+</code></pre></div>
+<h1>Angular2</h1>
+
+<p>Install some @angular files:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ npm i -S @angular/common @angular/compiler @angular/core @angular/forms @angular/http @angular/platform-browser @angular/platform-browser-dynamic @angular/platform-server @angular/router
+</code></pre></div>
+<h1>Webpack</h1>
+
+<p>Install webpack and webpack-dev-server:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ npm i -D webpack webpack-dev-server webpack-merge
+</code></pre></div>
+<p>|Loader| Function|
+|:-|:-|
+|Webpack| Build tool that treats each file processing as loaders instead of pipes or tasks|
+|Webpack-dev-server| a webpack server for hosting the project on localhost to debug|
+|Webpack-merge|sometimes you will have multiple webpack configs for different platforms/stages e.g. mobile, electron, develop, production|</p>
+
+<h2>Webpack config files</h2>
+
+<p>I separated webpack into two parts: shared parts and platform/stage specific parts. Therefore webpack.config.js is just used to call them according to parameters</p>
+
+<h4>webpack.config.js:</h4>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">switch</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="s1">'prod'</span><span class="err">:</span>
+  <span class="k">case</span> <span class="s1">'production'</span><span class="err">:</span>
+      <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config/webpack.prod'</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">'test'</span><span class="err">:</span>
+    <span class="k">case</span> <span class="s1">'testing'</span><span class="err">:</span>
+        <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config/webpack.test'</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+      <span class="k">case</span> <span class="s1">'dev'</span><span class="err">:</span>
+      <span class="k">case</span> <span class="s1">'development'</span><span class="err">:</span>
+          <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config/webpack.dev'</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+  <span class="nl">default</span><span class="p">:</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4>webpack.common.js:</h4>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">helpers</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./helpers'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">autoprefixer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'autoprefixer'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">CopyWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'copy-webpack-plugin'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">METADATA</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">isDevServer</span><span class="p">:</span> <span class="nx">helpers</span><span class="p">.</span><span class="nx">isWebpackDevServer</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">metadata</span><span class="p">:</span> <span class="nx">METADATA</span><span class="p">,</span>
+
+  <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./src/vendor.ts'</span><span class="p">,</span>
+    <span class="s1">'main'</span><span class="p">:</span> <span class="s1">'./src/main.ts'</span>
+  <span class="p">},</span>
+
+  <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">],</span>
+    <span class="na">root</span><span class="p">:</span> <span class="nx">helpers</span><span class="p">.</span><span class="nx">root</span><span class="p">(</span><span class="s1">'src'</span><span class="p">),</span>
+    <span class="na">modulesDirectories</span><span class="p">:</span> <span class="p">[</span><span class="s1">'node_modules'</span><span class="p">]</span>
+  <span class="p">},</span>
+
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">preLoaders</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+      <span class="na">loader</span><span class="p">:</span> <span class="s1">'tslint-loader'</span><span class="p">,</span>
+      <span class="na">exclude</span><span class="p">:</span> <span class="p">[</span><span class="nx">helpers</span><span class="p">.</span><span class="nx">root</span><span class="p">(</span><span class="s1">'node_modules'</span><span class="p">)]</span>
+    <span class="p">}],</span>
+
+    <span class="na">loaders</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+      <span class="c1">// loaders: ['awesome-typescript-loader', 'angular2-template-loader'],</span>
+      <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span><span class="s1">'ts-loader'</span><span class="p">,</span> <span class="s1">'angular2-template-loader'</span><span class="p">],</span>
+      <span class="na">exclude</span><span class="p">:</span> <span class="p">[</span><span class="sr">/</span><span class="se">\.(</span><span class="sr">spec|e2e</span><span class="se">)\.</span><span class="sr">ts$/</span><span class="p">]</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">json$/</span><span class="p">,</span>
+      <span class="na">loader</span><span class="p">:</span> <span class="s1">'json-loader'</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+      <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span><span class="s1">'to-string-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">,</span> <span class="s1">'postcss-loader'</span><span class="p">]</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">scss$/</span><span class="p">,</span>
+      <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+      <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span><span class="s1">'raw-loader'</span><span class="p">,</span> <span class="s1">'sass-loader'</span><span class="p">,</span> <span class="s1">'postcss-loader'</span><span class="p">]</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+      <span class="na">loader</span><span class="p">:</span> <span class="s1">'raw-loader'</span><span class="p">,</span>
+      <span class="na">exclude</span><span class="p">:</span> <span class="p">[</span><span class="nx">helpers</span><span class="p">.</span><span class="nx">root</span><span class="p">(</span><span class="s1">'src/index.html'</span><span class="p">)]</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">jpg|png|gif</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+      <span class="na">loader</span><span class="p">:</span> <span class="s1">'file'</span>
+    <span class="p">}],</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+      <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+        <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'polyfills'</span><span class="p">,</span> <span class="s1">'vendor'</span><span class="p">].</span><span class="nx">reverse</span><span class="p">()</span>
+      <span class="p">}),</span>
+      <span class="k">new</span> <span class="nx">CopyWebpackPlugin</span><span class="p">([{</span>
+        <span class="na">from</span><span class="p">:</span> <span class="s1">'src/assets'</span><span class="p">,</span>
+        <span class="na">to</span><span class="p">:</span> <span class="s1">'assets'</span>
+      <span class="p">}]),</span>
+      <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+        <span class="na">template</span><span class="p">:</span> <span class="s1">'src/index.html'</span><span class="p">,</span>
+        <span class="na">chunksSortMode</span><span class="p">:</span> <span class="s1">'dependency'</span>
+      <span class="p">}),</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">postcss</span><span class="p">:</span> <span class="p">[</span><span class="nx">autoprefixer</span><span class="p">({</span>
+    <span class="na">browsers</span><span class="p">:</span> <span class="p">[</span><span class="s1">'last 2 versions'</span><span class="p">]</span>
+  <span class="p">})]</span>
+<span class="p">}</span>
+
+</code></pre></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="post-item" id="m16">
+        <div class="post-inner">
+            <div class="post-head clearfix">
+                <div class="avatar pull-left">
+                    <a href="#">
+                        <img class="post-img" src="/image/Artfill_logo.png"/>
+                    </a>
+                </div>
+                <div class="user-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="handle">
+                                <a href="/2016/08/11/practice-angular2-and-scss-with-personal-knowledge-portal.html">
+                                    Practice Angular2 and scss with Personal Knowledge Portal
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="col-md-4 text-xs-right">
+                            <a href="search.html?category="></a>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <div class="asker-meta">
+                            <!-- <span class="qa-post-what">
+                                        </span> -->
+                            <span class="qa-post-when">
+                                <span class="qa-post-when-data">
+                                    11 Aug 2016
+                                </span>
+                            </span>
+                            <span class="qa-post-who">
+                                <span class="qa-post-who-pad">
+                                    by
+                                </span>
+                                <span class="qa-post-who-data">
+                                    <a href="#">
+                                        IniZio
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qa-post-content" style="text-overflow: ellipsis;overflow:hidden;max-height: 100px;">
+                <h1>First taste with angular js and npm and such</h1>
+
+<p>I am pretty late to the party, to be honest. I thought the most important part in web projects are backends, and therefore I learnt mostly about Codeigniter and PHP in past year. However the fast-growing trend of preprocessing in frontend really amazed me, where you do not need to stare at countless rows of css anywhere. There are so many choices of tools, frameworks and workflows. In fact I have been hesitating so much I haven not learnt much from shopping through all of them.</p>
+
+<h1>Maybe I really need to build something first</h1>
+
+<p>I never am a good executer. I love dreaming flawless, extensible and upgradable models and frameworks, just never get my hands dirty to make them real...</p>
+
+<p>My project will be a one month project. Within this month I will finish a raw yet fully-functional website first.
+It will be for a personal knowledge portal. In short it will be like &#39;write whatever I want that might be useful. Make it even more useful when I need it&#39;.</p>
+
+<p>For the first month I will just make saving links easier and organized using tags. I want to use angular js and save to firebase. I will try to keep as few components as possible to waste less time extending to mobile version as well.</p>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="post-item" id="m16">
+        <div class="post-inner">
+            <div class="post-head clearfix">
+                <div class="avatar pull-left">
+                    <a href="#">
+                        <img class="post-img" src="/image/Artfill_logo.png"/>
+                    </a>
+                </div>
+                <div class="user-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="handle">
+                                <a href="/2016/06/23/qr-code-idea-for-artfillco.html">
+                                    QR code idea for Artfill.co
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="col-md-4 text-xs-right">
+                            <a href="search.html?category="></a>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <div class="asker-meta">
+                            <!-- <span class="qa-post-what">
+                                        </span> -->
+                            <span class="qa-post-when">
+                                <span class="qa-post-when-data">
+                                    23 Jun 2016
+                                </span>
+                            </span>
+                            <span class="qa-post-who">
+                                <span class="qa-post-who-pad">
+                                    by
+                                </span>
+                                <span class="qa-post-who-data">
+                                    <a href="#">
+                                        IniZio
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qa-post-content" style="text-overflow: ellipsis;overflow:hidden;max-height: 100px;">
+                <h2 class="text-xs-center">
+    How it started
+</h2>
+
+<p><br />
+<p>
+    Lane Crawford site
+</p>
+<p>
+    When I looked at Lane Crawford website, the Payment inspired me. It provides a very smooth flow of payment. Payment methods include Credit Card, 支付宝, Payment on Receive, shop credit. Payment on receive offers automatically sendin the product to your address.
+</p>
+<p>
+    Now the payment flow is really nice, but obviously it cant be applied directly to Artfill, as the company size is so different, and we are Hong Kong local. However it can be a perfect model for learning. The idea starts here.
+</p></p>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="post-item" id="m16">
+        <div class="post-inner">
+            <div class="post-head clearfix">
+                <div class="avatar pull-left">
+                    <a href="#">
+                        <img class="post-img" src="/image/Artfill_logo.png"/>
+                    </a>
+                </div>
+                <div class="user-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="handle">
                                 <a href="/development/2016/05/31/pick-up-php-1.html">
                                     Pick up PHP and codeigniter (1)
                                 </a>
                             </h4>
                         </div>
                         <div class="col-md-4 text-xs-right">
-                            <a href="search.html?category=Development">Development</a>
+                            <a href="search.html?category="></a>
                         </div>
                     </div>
                     <div class="post-meta">
@@ -100,14 +471,13 @@
                 <p>
     Just an idea
     <a href="https://godoc.org/golang.org/x/mobile/exp/app/debug">
-        <img alt="GoDoc" src="https://godoc.org/golang.org/x/mobile/exp/app/debug?status.svg"/>
+        <img alt="GoDoc" src="https://godoc.org/golang.org/x/mobile/exp/app/debug?status.svg">
     </a>
     <button onclick="document.getElementById('gonna').focus();document.getElementById('gonna').select();document.execCommand('copy');" type="btn btn-default">
     </button>
 </p>
 <div class="row">
-    <textarea cols="50" id="gonna" onclick="this.focus();this.select()" readonly="readonly" rows="10" style="visibility: visible;">
-        this is wt i want
+    <textarea cols="50" id="gonna" onclick="this.focus();this.select()" readonly="readonly" rows="10" style="visibility: visible;">        this is wt i want
     </textarea>
     <div class="col-md-4">
         <figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
@@ -116,7 +486,7 @@
 </span><span class="p">}</span></code></pre></figure>
     </div>
     <div class="col-md-4">
-        <!-- <script src="https://gist.github.com/IniZio/dab65a4e52c132cb06e3.js"> </script> -->
+        
     </div>
     <div class="col-md-4">
     </div>
@@ -128,10 +498,10 @@
                 <img alt="Mountain View" class="img-fluid" src="/image/front_page.png">
                     <div class="mask">
                     </div>
-                </img>
+                
             </div>
         </div>
-        <!--Main information-->
+        
         <div class="col-md-4">
             <h4 class="h5-responsive">
                 We are professionals
@@ -143,31 +513,31 @@
                 <a class="btn btn-primary waves-effect" href="">
                     Get it now!
                 </a>
-            </hr>
+            
         </div>
     </div>
 </div>
 <hr class="extra-margins">
-    <div class="row">
+<div class="row">
         <div class="col-md-4">
             <div class="card">
-                <!--Card image-->
+                
                 <div class="view overlay hm-white-slight">
                     <img alt="" class="img-fluid" src="http://mdbootstrap.com/images/regular/city/img%20(4).jpg">
                         <a href="#">
                             <div class="mask waves-effect waves-light">
                             </div>
                         </a>
-                    </img>
+                    
                 </div>
-                <!--/.Card image-->
-                <!--Card content-->
+                
+                
                 <div class="card-block">
-                    <!--Title-->
+                    
                     <h4 class="card-title">
                         Card title
                     </h4>
-                    <!--Text-->
+                    
                     <p class="card-text">
                         Some quick example text to build on the card title and make up the bulk of the card's content.
                     </p>
@@ -175,28 +545,19 @@
                         Read more
                     </a>
                 </div>
-                <!--/.Card content-->
+                
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!--Carousel Wrapper-->
-            <div class="carousel slide carousel-multi-item wow fadeIn" data-ride="carousel" id="multi-item-example">
-                <!--Controls-->
-                <div class="controls-top">
+<div class="controls-top">
                     <a class="btn-floating btn-small mdb-color" data-slide="prev" href="#multi-item-example">
-                        <i class="fa fa-chevron-left">
-                        </i>
+                        
                     </a>
                     <a class="btn-floating btn-small mdb-color" data-slide="next" href="#multi-item-example">
-                        <i class="fa fa-chevron-right">
-                        </i>
+                        
                     </a>
                 </div>
-                <!--/.Controls-->
-                <!--Indicators-->
-                <ol class="carousel-indicators">
+<ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#multi-item-example">
                     </li>
                     <li data-slide-to="1" data-target="#multi-item-example">
@@ -204,284 +565,155 @@
                     <li data-slide-to="2" data-target="#multi-item-example">
                     </li>
                 </ol>
-                <!--/.Indicators-->
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-                    <!--First slide-->
-                    <div class="carousel-item active">
-                        <div class="col-md-4">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up green lighten-1">
+<div class="card-up green lighten-1">
                                 </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
+<h4 class="card-title">
                                         Anna Doe
                                     </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+<hr>
+<p>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+<div class="card-up green darken-2">
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up green darken-2">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-2.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
+<div class="card-block">
+                                    
                                     <h4 class="card-title">
                                         Anna Doe
                                     </h4>
                                     <hr>
-                                        <!--Quotation-->
+                                        
                                         <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+                                    
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up green darken-4">
+<div class="card-up green darken-4">
                                 </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
+<h4 class="card-title">
                                         Anna Doe
                                     </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+<hr>
+<p>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+<div class="card-up blue lighten-1">
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                    </div>
-                    <!--/.First slide-->
-                    <!--Second slide-->
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up blue lighten-1">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
+<div class="card-block">
+                                    
                                     <h4 class="card-title">
                                         Anna Doe
                                     </h4>
                                     <hr>
-                                        <!--Quotation-->
+                                        
                                         <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+                                    
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up blue darken-2">
+<div class="card-up blue darken-2">
                                 </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
+<h4 class="card-title">
                                         Anna Doe
                                     </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+<hr>
+<p>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+<div class="card-up blue darken-4">
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up blue darken-4">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-3.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
+<div class="card-block">
+                                    
                                     <h4 class="card-title">
                                         Anna Doe
                                     </h4>
                                     <hr>
-                                        <!--Quotation-->
+                                        
                                         <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+                                    
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                    </div>
-                    <!--/.Second slide-->
-                    <!--Third slide-->
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up indigo lighten-1">
+<div class="card-up indigo lighten-1">
                                 </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
+<h4 class="card-title">
                                         Anna Doe
                                     </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+<hr>
+<p>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+<div class="card-up indigo darken-1">
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up indigo darken-1">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
+<div class="card-block">
+                                    
                                     <h4 class="card-title">
                                         Anna Doe
                                     </h4>
                                     <hr>
-                                        <!--Quotation-->
+                                        
                                         <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
+                                    
                                 </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up indigo darken-4">
+<div class="card-up indigo darken-4">
                                 </div>
-                                <!--Avatar-->
-                                <div class="avatar">
+<div class="avatar">
                                     <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg">
-                                    </img>
+                                    
                                 </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
+<h4 class="card-title">
                                         Anna Doe
                                     </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
+<hr>
+<p>
+                                            
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
                                         </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                    </div>
-                    <!--/.Third slide-->
-                </div>
-                <!--/.Slides-->
-            </div>
-            <!--/.Carousel Wrapper-->
-        </div>
-    </div>
-    <p>
+<p>
         31 May 2016
     </p>
-</hr>
-
             </div>
         </div>
     </div>
@@ -498,7 +730,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <h4 class="handle">
-                                <a href="/study/2016/05/28/summmary.html">
+                                <a href="/study/2016/05/28/Study.html">
                                     Blog["Study"][0]
                                 </a>
                             </h4>
@@ -531,10 +763,7 @@
                 </div>
             </div>
             <div class="qa-post-content" style="text-overflow: ellipsis;overflow:hidden;max-height: 100px;">
-                <p>
-    This is the end of semester, so I will just upload the notes I made throughtout the period
-</p>
-<ul class="nav nav-tabs">
+                <ul class="nav nav-tabs">
     <li class="active">
         <a data-toggle="tab" href="#comp2011">
             Comp 2011
@@ -852,6 +1081,7 @@
         </p>
     </div>
 </div>
+
             </div>
         </div>
     </div>
@@ -874,7 +1104,7 @@
                             </h4>
                         </div>
                         <div class="col-md-4 text-xs-right">
-                            <a href="search.html?category=Life">Life</a>
+                            <a href="search.html?category="></a>
                         </div>
                     </div>
                     <div class="post-meta">
@@ -904,21 +1134,22 @@
                 <h2 class="text-xs-center">
     WHY do your start this blog?
 </h2>
-<br />
+
 <p>
     I am a student pursuing an IT-related career upon graduation.
 </p>
 <p>
     In the past, I often let random ideas and trivial inspirations slip through my mind. Now, I want to write them down so that I can implement them and review the outcomes later.
 </p>
-<br/>
+
 <h2 class="text-xs-center">
     WHAT are you doing with this blog?
 </h2>
-<br />
+
 <p>
-    My blog name is “IniZio,”  an italian word meaning “start” in english. (Inizio is also the name of the student council candiate party I formed, but the party eventually got abandoned.) And these are the areas I am writing on:
-    <dl>
+    My blog name is “IniZio”,  an italian word meaning “start” in english. (Inizio is also the name of the student council candiate party I formed, but the party eventually got abandoned.) And these are the areas I am writing on:
+    </p>
+<dl>
         <dt>
             Study
         </dt>
@@ -944,15 +1175,16 @@
             Shower thoughts.
         </dd>
     </dl>
-</p>
-<br/>
+
+
 <h2 class="text-xs-center">
     WHEN do you blog?
 </h2>
-<br />
+
 <p>
     Yup, I know I will forget about this blog too if I do not set a schedule to force myself to keep writing.
-    <dl>
+    </p>
+<dl>
         <dt>
             Study
         </dt>
@@ -978,12 +1210,12 @@
             I am not sure about this. I am gonna go with the flow.
         </dd>
     </dl>
-</p>
-<br/>
+
+
 <h2 class="text-xs-center" id="contact">
     HOW to contact you?
 </h2>
-<br />
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">
@@ -1060,447 +1292,13 @@
 <p>
     Add me :P
 </p>
-<br/>
+
 <p>
     Thats all I have to say for this blog[0].
 </p>
 <h3>
     Hello World :)
 </h3>
-            </div>
-        </div>
-    </div>
-    
-    <div class="post-item" id="m16">
-        <div class="post-inner">
-            <div class="post-head clearfix">
-                <div class="avatar pull-left">
-                    <a href="#">
-                        <img class="post-img" src="/image/Artfill_logo.png"/>
-                    </a>
-                </div>
-                <div class="user-detail">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h4 class="handle">
-                                <a href="/development/2015/11/23/gomobile-html5-native-app.html">
-                                    HTML5+gomobile+android studio
-                                </a>
-                            </h4>
-                        </div>
-                        <div class="col-md-4 text-xs-right">
-                            <a href="search.html?category=Development">Development</a>
-                        </div>
-                    </div>
-                    <div class="post-meta">
-                        <div class="asker-meta">
-                            <!-- <span class="qa-post-what">
-                                        </span> -->
-                            <span class="qa-post-when">
-                                <span class="qa-post-when-data">
-                                    23 Nov 2015
-                                </span>
-                            </span>
-                            <span class="qa-post-who">
-                                <span class="qa-post-who-pad">
-                                    by
-                                </span>
-                                <span class="qa-post-who-data">
-                                    <a href="#">
-                                        IniZio
-                                    </a>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="qa-post-content" style="text-overflow: ellipsis;overflow:hidden;max-height: 100px;">
-                <p>
-    Just an idea
-    <a href="https://godoc.org/golang.org/x/mobile/exp/app/debug">
-        <img alt="GoDoc" src="https://godoc.org/golang.org/x/mobile/exp/app/debug?status.svg"/>
-    </a>
-    <button onclick="document.getElementById('gonna').focus();document.getElementById('gonna').select();document.execCommand('copy');" type="btn btn-default">
-    </button>
-</p>
-<div class="row">
-    <textarea cols="50" id="gonna" onclick="this.focus();this.select()" readonly="readonly" rows="10" style="visibility: visible;">
-        this is wt i want
-    </textarea>
-    <div class="col-md-4">
-        <figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
-</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">(){</span><span class="x">
-</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"hello world"</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span></code></pre></figure>
-    </div>
-    <div class="col-md-4">
-        <!-- <script src="https://gist.github.com/IniZio/dab65a4e52c132cb06e3.js"> </script> -->
-    </div>
-    <div class="col-md-4">
-    </div>
-</div>
-<div class="row">
-    <div class="card card-block col-md-7">
-        <div class="col-md-7">
-            <div class="view overlay hm-white-light z-depth-1-half">
-                <img alt="Mountain View" class="img-fluid" src="/image/front_page.png">
-                    <div class="mask">
-                    </div>
-                </img>
-            </div>
-        </div>
-        <!--Main information-->
-        <div class="col-md-4">
-            <h4 class="h5-responsive">
-                We are professionals
-            </h4>
-            <hr>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis pariatur quod ipsum atque quam dolorem
-                </p>
-                <a class="btn btn-primary waves-effect" href="">
-                    Get it now!
-                </a>
-            </hr>
-        </div>
-    </div>
-</div>
-<hr class="extra-margins">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img alt="" class="img-fluid" src="http://mdbootstrap.com/images/regular/city/img%20(4).jpg">
-                        <a href="#">
-                            <div class="mask waves-effect waves-light">
-                            </div>
-                        </a>
-                    </img>
-                </div>
-                <!--/.Card image-->
-                <!--Card content-->
-                <div class="card-block">
-                    <!--Title-->
-                    <h4 class="card-title">
-                        Card title
-                    </h4>
-                    <!--Text-->
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    </p>
-                    <a class="btn btn-primary waves-effect waves-light" href="#">
-                        Read more
-                    </a>
-                </div>
-                <!--/.Card content-->
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!--Carousel Wrapper-->
-            <div class="carousel slide carousel-multi-item wow fadeIn" data-ride="carousel" id="multi-item-example">
-                <!--Controls-->
-                <div class="controls-top">
-                    <a class="btn-floating btn-small mdb-color" data-slide="prev" href="#multi-item-example">
-                        <i class="fa fa-chevron-left">
-                        </i>
-                    </a>
-                    <a class="btn-floating btn-small mdb-color" data-slide="next" href="#multi-item-example">
-                        <i class="fa fa-chevron-right">
-                        </i>
-                    </a>
-                </div>
-                <!--/.Controls-->
-                <!--Indicators-->
-                <ol class="carousel-indicators">
-                    <li class="active" data-slide-to="0" data-target="#multi-item-example">
-                    </li>
-                    <li data-slide-to="1" data-target="#multi-item-example">
-                    </li>
-                    <li data-slide-to="2" data-target="#multi-item-example">
-                    </li>
-                </ol>
-                <!--/.Indicators-->
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-                    <!--First slide-->
-                    <div class="carousel-item active">
-                        <div class="col-md-4">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up green lighten-1">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up green darken-2">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-2.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up green darken-4">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                    </div>
-                    <!--/.First slide-->
-                    <!--Second slide-->
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up blue lighten-1">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up blue darken-2">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up blue darken-4">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-3.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                    </div>
-                    <!--/.Second slide-->
-                    <!--Third slide-->
-                    <div class="carousel-item">
-                        <div class="col-md-4">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up indigo lighten-1">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up indigo darken-1">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-1.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <div class="col-md-4 hidden-sm-down">
-                            <!--Card-->
-                            <div class="card testimonial-card">
-                                <!--Bacground color-->
-                                <div class="card-up indigo darken-4">
-                                </div>
-                                <!--Avatar-->
-                                <div class="avatar">
-                                    <img class="img-circle img-responsive" src="http://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg">
-                                    </img>
-                                </div>
-                                <div class="card-block">
-                                    <!--Name-->
-                                    <h4 class="card-title">
-                                        Anna Doe
-                                    </h4>
-                                    <hr>
-                                        <!--Quotation-->
-                                        <p>
-                                            <i class="fa fa-quote-left">
-                                            </i>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci
-                                        </p>
-                                    </hr>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                    </div>
-                    <!--/.Third slide-->
-                </div>
-                <!--/.Slides-->
-            </div>
-            <!--/.Carousel Wrapper-->
-        </div>
-    </div>
-    <p>
-        23 Nov 2015
-    </p>
-</hr>
-
             </div>
         </div>
     </div>
@@ -1564,8 +1362,7 @@
                 <div class="col-md-2 col-md-offset-0 side-bar bootcards-list">
                     <div class="row">
     <div class="col-md-12">
-        <div class="card text-xs-center">
-            <!-- <div class="card-header" style="background-image: url('/image/front_page.png');"> -->
+        <!-- <div class="card text-xs-center">
             <div class="card-header">
                 Author
             </div>
@@ -1579,7 +1376,9 @@
                     Just a developer
                 </p>
             </div>
-        </div>
+        </div> -->
+        <div class="github-card" data-github="inizio" data-width="400" data-height="" data-theme="default"></div>
+        <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
     </div>
 </div>
 <div class="row">
@@ -1589,41 +1388,6 @@
                 Categories
             </div>
             <div class="card-block">
-                
-                                       
-                <div class="collection" data-name="Development">
-                    <h4>
-                        Development
-                    </h4>
-                    <!-- <h5>
-                            2 posts
-                        </h5> -->
-                    <ul>
-                        
-                                             
-                                               
-                                             
-                                           
-                                             
-                                               
-                        <li>
-                            <a href="/development/2016/05/31/pick-up-php-1.html">
-                                Pick up PHP and codeigniter (1)
-                            </a>
-                        </li>
-                        
-                                             
-                                               
-                        <li>
-                            <a href="/development/2015/11/23/gomobile-html5-native-app.html">
-                                HTML5+gomobile+android studio
-                            </a>
-                        </li>
-                        
-                                             
-                                           
-                    </ul>
-                </div>
                 
                                        
                 <div class="collection" data-name="Life">
@@ -1658,6 +1422,41 @@
                         Study
                     </h4>
                     <!-- <h5>
+                            2 posts
+                        </h5> -->
+                    <ul>
+                        
+                                             
+                                               
+                                             
+                                           
+                                             
+                                               
+                        <li>
+                            <a href="/study/2016/09/01/.html">
+                                2016-09-01
+                            </a>
+                        </li>
+                        
+                                             
+                                               
+                        <li>
+                            <a href="/study/2016/05/28/Study.html">
+                                Blog["Study"][0]
+                            </a>
+                        </li>
+                        
+                                             
+                                           
+                    </ul>
+                </div>
+                
+                                       
+                <div class="collection" data-name="Development">
+                    <h4>
+                        Development
+                    </h4>
+                    <!-- <h5>
                             1 post
                         </h5> -->
                     <ul>
@@ -1669,8 +1468,8 @@
                                              
                                                
                         <li>
-                            <a href="/study/2016/05/28/summmary.html">
-                                Blog["Study"][0]
+                            <a href="/development/2016/05/31/pick-up-php-1.html">
+                                Pick up PHP and codeigniter (1)
                             </a>
                         </li>
                         
@@ -1692,18 +1491,8 @@
             <div class="card-block">
                 
                     
-                <a href="/search.html?tags=html5" style="text-decoration: underline; font-size: 15.0px">
+                <a href="/search.html?tags=html5" style="text-decoration: underline; font-size: 13.5px">
                     html5
-                </a>&nbsp;
-                
-                    
-                <a href="/search.html?tags=gomobile" style="text-decoration: underline; font-size: 13.5px">
-                    gomobile
-                </a>&nbsp;
-                
-                    
-                <a href="/search.html?tags=android" style="text-decoration: underline; font-size: 13.5px">
-                    android
                 </a>&nbsp;
                 
                     
@@ -1737,8 +1526,18 @@
                 </a>&nbsp;
                 
                     
-                <a href="/search.html?tags=codeigniter" style="text-decoration: underline; font-size: 13.5px">
+                <a href="/search.html?tags=codeigniter" style="text-decoration: underline; font-size: 15.0px">
                     codeigniter
+                </a>&nbsp;
+                
+                    
+                <a href="/search.html?tags=artfill" style="text-decoration: underline; font-size: 13.5px">
+                    artfill
+                </a>&nbsp;
+                
+                    
+                <a href="/search.html?tags=QR_code" style="text-decoration: underline; font-size: 13.5px">
+                    QR_code
                 </a>&nbsp;
                 
             </div>
@@ -1755,13 +1554,37 @@
                 <ul>
                     
                     <li>
+                        <a href="/study/2016/09/01/.html">
+                            2016-09-01
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/2016/08/26/create-a-npm-project-from-scratch.html">
+                            Create a NPM project from scratch (I)
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/2016/08/11/practice-angular2-and-scss-with-personal-knowledge-portal.html">
+                            Practice Angular2 and scss with Personal Knowledge Portal
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/2016/06/23/qr-code-idea-for-artfillco.html">
+                            QR code idea for Artfill.co
+                        </a>
+                    </li>
+                    
+                    <li>
                         <a href="/development/2016/05/31/pick-up-php-1.html">
                             Pick up PHP and codeigniter (1)
                         </a>
                     </li>
                     
                     <li>
-                        <a href="/study/2016/05/28/summmary.html">
+                        <a href="/study/2016/05/28/Study.html">
                             Blog["Study"][0]
                         </a>
                     </li>
@@ -1769,12 +1592,6 @@
                     <li>
                         <a href="/life/2016/05/27/blog.html">
                             BLoG[0]?
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/development/2015/11/23/gomobile-html5-native-app.html">
-                            HTML5+gomobile+android studio
                         </a>
                     </li>
                     
