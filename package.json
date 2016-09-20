@@ -1,0 +1,46 @@
+{
+  "name": "inizio.github.io",
+  "description": "A Vue.js project",
+  "author": "inizio <digit4free@gmail.com>",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "post": "node post.js"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.0.0",
+    "material-design-lite": "^1.2.1",
+    "vue": "^1.0.0",
+    "vue-router": "^0.7.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "create-file": "^1.0.1",
+    "cross-env": "^1.0.6",
+    "css-loader": "^0.23.0",
+    "file-loader": "^0.8.4",
+    "highlight.js": "^9.6.0",
+    "inquirer": "^1.1.3",
+    "json-loader": "^0.5.4",
+    "jsonfile": "^2.4.0",
+    "markdown-it-front-matter": "^0.1.2",
+    "markdown-it-katex": "^2.0.1",
+    "markdown-it-loader": "^0.3.2",
+    "moment": "^2.15.0",
+    "node-sass": "^3.10.0",
+    "sanitize-filename": "^1.6.0",
+    "sass-loader": "^4.0.2",
+    "url-loader": "^0.5.7",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^8.2.1",
+    "vue-style-loader": "^1.0.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0",
+    "yaml": "^0.3.0"
+  }
+}
