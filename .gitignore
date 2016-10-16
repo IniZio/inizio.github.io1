@@ -12,6 +12,3 @@ $RECYCLE.BIN/
 
 .idea
 .vscode
-
-dist/
-build/
