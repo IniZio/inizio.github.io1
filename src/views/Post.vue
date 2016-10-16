@@ -13,19 +13,30 @@
   import Vue from 'vue'
   import api from '../api'
   import conf from '../conf.json'
-  import marked from 'marked'
-  import Prism from 'prismjs'
-  import fm from 'front-matter'
-
-  // https://github.com/chjj/marked#options-1
-  marked.setOptions({
-    highlight (code, lang) {
+  // import marked from 'marked'
+  var md = require('markdown-it')({
+    html: true,
+    highlight: function (code, lang) {
       // http://prismjs.com/extending.html#api
       return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
     },
-    breaks: true,
-    gfm: true
+    breaks: true
   })
+  var mk = require('markdown-it-katex')
+  import Prism from 'prismjs'
+  import fm from 'front-matter'
+
+  md.use(mk)
+
+  // https://github.com/chjj/marked#options-1
+  // marked.setOptions({
+  //   highlight (code, lang) {
+  //     // http://prismjs.com/extending.html#api
+  //     return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
+  //   },
+  //   breaks: true,
+  //   gfm: true
+  // })
 
   export default {
     name: 'postView',
@@ -40,7 +51,8 @@
 
     computed: {
       htmlFromMarkdown () {
-        return marked(this.content)
+        // return marked(this.content)
+        return md.render(this.content)
       }
     },
 
