@@ -1,8 +1,8 @@
 <template>
   <section class="post-view">
-    <div v-if="!content">loading..</div>
+    <transition name="fade"><div v-if="!content">loading..</div></transition>
     <h1 class="post-title">
-      {{ title }}
+      <router-link :to="$route.fullPath">{{ title }}</router-link>
       <time pubdate="pubdate" :datetime="this.date" class="post-date">{{ this.date | timeago }}</time>
     </h1>
     <article v-if="content" v-html="htmlFromMarkdown"></article>

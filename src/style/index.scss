@@ -1,0 +1,198 @@
+@import '~normalize.css';
+@import '~prismjs/themes/prism.css';
+
+//
+// variable
+// -----------------------------------------
+
+$fontSize: 15px;
+
+
+$fontFamily: "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+$monospaceFontFamily: "PT Mono", Consolas, Monaco, Menlo, monospace;
+
+$primaryColor: #5eccb6;
+$bgColor: rgb(250,250,250);
+$textColor: #555;
+$linkColor: darken($primaryColor, 20);
+$metaColor: #888;
+$codeBgColor: #f1f1f1;
+
+//
+// common
+// -----------------------------------------
+
+::-moz-selection,
+::selection {
+  background: #B2D7FF;
+}
+
+body {
+  // font
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  line-height: 2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  // size
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+  background: $bgColor;
+  color: $textColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+.post-title {
+  border-bottom: 1px rgba(120,120,120,0.2) solid;
+  padding-bottom: 10px;
+}
+
+.title {
+  cursor: default;
+  font-size: 50px;
+  font-family: "Alegreya Sans SC";
+}
+
+a {
+  text-decoration: none;
+  color: $linkColor;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.header {
+  margin: 50px auto;
+  text-align: center;
+  a {
+    font-size: $fontSize + 2;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: $textColor;
+  }
+}
+
+//
+// List View
+// -----------------------------------------
+
+.list-view {
+  margin: 0 20px;
+  ol,
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.list-item {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.item-title {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: $fontSize + 6;
+  color: $textColor;
+  &:hover {
+    color: $linkColor;
+  }
+}
+
+.item-date {
+  display: inline-block;
+  font-size: $fontSize - 2;
+  color: $metaColor;
+  border-top: 1px solid #ddd;
+  padding-top: 2px;
+  cursor:default;
+}
+
+//
+// Post View
+// -----------------------------------------
+
+.post-view {
+  margin: 0 40px 50px;
+  // a:hover {
+  //   border-bottom: 1px dashed $linkColor;
+  // }
+}
+
+.post-title {
+  line-height: 1;
+  margin-bottom: 50px;
+}
+
+// when smaller than tablet
+@media (max-width: 767px) {
+  .post-title {
+    font-size: 1.5em;
+  }
+}
+
+.post-date {
+  float: right;
+  font-size: $fontSize - 2;
+  font-weight: 400;
+  line-height: 2;
+  color: $metaColor;
+}
+
+pre {
+  background: $codeBgColor !important;
+  padding: 16px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+code {
+  background: $codeBgColor;
+  font-family: $monospaceFontFamily !important;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0 16px;
+  border-left: 4px solid #ddd;
+}
+
+// headers
+.markdownIt-Anchor {
+  opacity: 0.2;
+
+}
+
+.markdownIt-Anchor:hover {
+  opacity: 1;
+}
+
+.table-of-contents {
+  position: absolute;
+  right: 0;
+  top:0;
+}
+
+//
+// Transition animation
+//
+// -----------------------------------------
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
