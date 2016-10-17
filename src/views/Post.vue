@@ -20,23 +20,23 @@
       // http://prismjs.com/extending.html#api
       return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
     },
-    breaks: true
+    typography: true,
+    linkify: true
   })
-  var mk = require('markdown-it-katex')
   import Prism from 'prismjs'
   import fm from 'front-matter'
 
-  md.use(mk)
-
-  // https://github.com/chjj/marked#options-1
-  // marked.setOptions({
-  //   highlight (code, lang) {
-  //     // http://prismjs.com/extending.html#api
-  //     return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
-  //   },
-  //   breaks: true,
-  //   gfm: true
-  // })
+  md.use(require('markdown-it-katex'))
+  md.use(require('markdown-it-header-sections'))
+  md.use(require('markdown-it-toc-and-anchor-fork').default, {
+    tocClassName: 'table-of-contents',
+    tocFirstLevel: '2',
+    anchorLink: true
+    // tocCallback: function (tocMarkdown, tocArray, tocHtml) {
+    //   console.log(tocArray)
+    //   console.log(tocHtml)
+    // }
+  })
 
   export default {
     name: 'postView',
@@ -51,7 +51,7 @@
 
     computed: {
       htmlFromMarkdown () {
-        // return marked(this.content)
+        // return md.render('@[toc](Title)' + this.content)
         return md.render(this.content)
       }
     },
