@@ -21,6 +21,7 @@ before_install:
 install:
   - npm i -g yarn
   - yarn
+  - npm install unicode
 
 script:
   - npm run build
