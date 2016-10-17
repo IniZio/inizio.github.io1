@@ -4,7 +4,7 @@ branches:
 
 language: node_js
 
-sudo: false
+sudo: true
 
 node_js: stable
 
@@ -13,19 +13,21 @@ cache:
   - node_modules
 
 before_install:
-- git config --global user.name "inizio"
-- git config --global user.email "digit4free@gmail.com"
-- git clone --branch master https://github.com/IniZio/inizio.github.io.git dist
+  - rm -rf dist/
+  - git config --global user.name "inizio"
+  - git config --global user.email "digit4free@gmail.com"
+  - git clone --branch master https://github.com/IniZio/inizio.github.io.git dist
 
 install:
-- npm install
+  - npm i -g yarn
+  - yarn
 
 script:
   - npm run build
 
 after_script:
-- cd dist
-- echo "inizio.github.io" > CNAME
-- git add --all .
-- git commit --message "automatically update from travis-ci"
-- git push "https://${GH_TOKEN}@${GH_REF}" master:master --quiet
+  - cd dist
+  - echo "inizio.github.io" > CNAME
+  - git add --all .
+  - git commit --message "automatically update from travis-ci"
+  - git push "https://${GH_TOKEN}@${GH_REF}" master:master --quiet

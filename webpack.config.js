@@ -77,7 +77,7 @@ module.exports = {
     }),
     new HtmlWebpackPlguin({
       template: path.resolve(__dirname, 'src', 'tpl.html'),
-      filename: '../index.html',
+      filename: 'index.html',
       minify: {
         // https://github.com/kangax/html-minifier#options-quick-reference
         removeComments: true,
