@@ -22,7 +22,7 @@ install:
   # - npm i -g yarn
   # - yarn
   - npm i
-  - npm install unicode
+  # - npm install unicode
 
 script:
   - npm run build
