@@ -13,7 +13,6 @@
   import Vue from 'vue'
   import api from '../api'
   import conf from '../conf.json'
-  // import marked from 'marked'
   var md = require('markdown-it')({
     html: true,
     highlight: function (code, lang) {
@@ -28,15 +27,11 @@
 
   md.use(require('markdown-it-katex'))
   md.use(require('markdown-it-header-sections'))
-  md.use(require('markdown-it-toc-and-anchor-fork').default, {
-    tocClassName: 'table-of-contents',
-    tocFirstLevel: '2',
-    anchorLink: true
-    // tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-    //   console.log(tocArray)
-    //   console.log(tocHtml)
-    // }
-  })
+  // md.use(require('markdown-it-toc-and-anchor').default, {
+  //   tocClassName: 'table-of-contents',
+  //   tocFirstLevel: '2',
+  //   anchorLink: true
+  // })
 
   export default {
     name: 'postView',

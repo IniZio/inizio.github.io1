@@ -1,7 +1,7 @@
 <template>
   <div id='app'>
     <header class="header">
-      <input tag="h1" to="/" class="title search-bar" v-model="keyword" @change="goToSearch" onclick="this.select()">
+      <input tag="h1" to="/" class="title search-bar" v-model="keyword" @keyup="goToSearch" onclick="this.select()">
     </header>
     <transition appear name="fade" out-in><router-view></router-view></transition>
   </div>
@@ -24,7 +24,7 @@
       }
     },
     mounted () {
-      this.keyword = this.$route.query.keyword === '' || this.$route.query.keyword === this.title ? this.title : this.$route.query.keyword
+      this.keyword = !this.$route.query.keyword || this.$route.query.keyword === this.title ? this.title : this.$route.query.keyword
     },
     methods: {
       goToSearch: function () {

@@ -70,8 +70,9 @@ h6 {
   background-color: $bgColor;
 }
 
-.search-bar:hover, .search-bar:focus {
-  background-color: lighten($bgColor, 15);
+.search-bar:hover, .search-bar:focus, .search-bar:active {
+  outline: none;
+  background-color: lighten($bgColor, 0.7);
   text-decoration: none;
 }
 
