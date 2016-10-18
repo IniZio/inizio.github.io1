@@ -28,8 +28,11 @@
 
     computed: {
       orderedList () {
+        var keyword = this.$route.query.keyword
         // Order by publish date, desc
-        return this.lists.sort((a, b) => (new Date(b.date) - new Date(a.date)))
+        return this.lists.filter(function (item) {
+          return item.title.toLowerCase().indexOf(keyword) !== -1
+        }).sort((a, b) => (new Date(b.date) - new Date(a.date)))
       }
     },
 
@@ -38,6 +41,11 @@
     },
 
     methods: {
+      filteredList () {
+        return this.lists.filter(function (row) {
+          return String(row.title).toLowerCase().indexOf(this.$route.query.keyword) > -1
+        })
+      },
       loadList () {
         window.document.title = conf.blogTitle
         api.getList()
@@ -45,6 +53,9 @@
             this.lists = lists
           })
           .catch(() => { /* TODO */ })
+      },
+      containKeyword (item) {
+        return item.title.indexOf(this.$route.query.keyword) !== -1
       }
     },
 

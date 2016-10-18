@@ -56,7 +56,7 @@
       }
     },
 
-    created () {
+    mounted () {
       this.loadPost()
     },
 

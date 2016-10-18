@@ -1,13 +1,12 @@
 <template>
   <div id='app'>
     <header class="header">
-      <router-link tag="h1" to="/" class="title">{{ title }}</router-link>
+      <input tag="h1" to="/" class="title search-bar" v-model="keyword" @change="goToSearch" onclick="this.select()">
     </header>
     <transition appear name="fade" out-in><router-view></router-view></transition>
   </div>
 </template>
 
-<!-- <style lang="stylus" src="./style/index.styl"></style> -->
 <style>
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:100');
 @import url('https://fonts.googleapis.com/css?family=Raleway:400');
@@ -20,7 +19,16 @@
   export default {
     data () {
       return {
-        title: conf.blogTitle
+        title: conf.blogTitle,
+        keyword: ''
+      }
+    },
+    mounted () {
+      this.keyword = this.$route.query.keyword === '' || this.$route.query.keyword === this.title ? this.title : this.$route.query.keyword
+    },
+    methods: {
+      goToSearch: function () {
+        this.$router.push({name: 'list', query: {'keyword': this.keyword === this.title ? '' : this.keyword}})
       }
     }
   }
