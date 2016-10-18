@@ -8,7 +8,8 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:100');
+/*@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:100');*/
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:200');
 @import url('https://fonts.googleapis.com/css?family=Raleway:400');
 </style>
 <style lang="sass" src="./style/index.scss"></style>

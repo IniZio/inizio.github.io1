@@ -7,7 +7,7 @@
 
 $fontSize: 15px;
 
-
+$titleFontFamily: "Alegreya Sans SC";
 $fontFamily: "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
 $monospaceFontFamily: "PT Mono", Consolas, Monaco, Menlo, monospace;
 
@@ -61,18 +61,19 @@ h6 {
 .title {
   cursor: default;
   font-size: 50px;
-  font-family: "Alegreya Sans SC";
+  font-family: $titleFontFamily, $fontFamily;
 }
 
 .search-bar {
   text-align: center;
   border:none;
   background-color: $bgColor;
+  transition: 0.4s;
 }
 
 .search-bar:hover, .search-bar:focus, .search-bar:active {
   outline: none;
-  background-color: lighten($bgColor, 0.7);
+  background-color: darken($bgColor, 2);
   text-decoration: none;
 }
 
@@ -183,20 +184,20 @@ blockquote {
 }
 
 // headers
-.markdownIt-Anchor {
-  opacity: 0.2;
+// .markdownIt-Anchor {
+//   opacity: 0.2;
 
-}
+// }
 
-.markdownIt-Anchor:hover {
-  opacity: 1;
-}
+// .markdownIt-Anchor:hover {
+//   opacity: 1;
+// }
 
-.table-of-contents {
-  position: absolute;
-  right: 0;
-  top:0;
-}
+// .table-of-contents {
+//   position: absolute;
+//   right: 0;
+//   top:0;
+// }
 
 //
 // Transition animation
