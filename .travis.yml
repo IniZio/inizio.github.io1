@@ -19,8 +19,9 @@ before_install:
   - git clone --branch master https://github.com/IniZio/inizio.github.io.git dist
 
 install:
-  - npm i -g yarn
-  - yarn
+  # - npm i -g yarn
+  # - yarn
+  - npm i
   - npm install unicode
 
 script:
