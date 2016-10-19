@@ -2,7 +2,7 @@
   <section class="list-view">
     <div v-if="!lists">loading..</div>
     <ol v-if="lists" class="list">
-      <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList" class="list-item">
+      <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="list-item">
         <router-link :to="'/post/' + item.sha" class="item-title">
           {{ item.title }}
         </router-link>
@@ -36,7 +36,7 @@
         // Filter by title, Order by publish date, desc, Pagination
         return this.lists.filter(function (item) {
           return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
-        }).sort((a, b) => (new Date(b.date) - new Date(a.date))).slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))
+        }).sort((a, b) => (new Date(b.date) - new Date(a.date)))
       }
     },
 

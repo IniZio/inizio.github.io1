@@ -82,6 +82,9 @@ a {
   color: $linkColor;
   overflow-wrap: break-word;
   word-break: break-all;
+  &:hover {
+    color: $primaryColor;
+  }
 }
 
 .header {
@@ -91,7 +94,7 @@ a {
     font-size: $fontSize + 2;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: $textColor;
+    // color: $textColor;
   }
 }
 
@@ -210,7 +213,8 @@ a {
 
 .list-item {
   border-left: 1px $primaryColor dotted;
-  padding: 15px;
+  border-radius: 0 5px 5px 0;
+  padding: 20px;
   position: relative;
   margin-bottom: 50px;
   box-shadow: 1px 0px 1px 1px rgba(100,100,100,0.1);
