@@ -24,7 +24,7 @@
       }
     },
     mounted () {
-      this.keyword = !this.$route.query.keyword || this.$route.query.keyword === this.title ? this.title : this.$route.query.keyword
+      this.keyword = this.$route.query.keyword || this.title
     },
     methods: {
       resetSearch: function () {

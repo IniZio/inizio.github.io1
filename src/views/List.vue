@@ -10,6 +10,7 @@
         <time pubdate="pubdate" :datetime="item.date" class="item-date">{{ item.date | timeago }}</time>
       </li>
     </ol>
+    <div><p style="text-align: center"><a class="btn" @click="turnPage(currentPage-1)" ><span><i class="arrow-left icon"></i></span>Previous</a>|<a class="btn" @click="turnPage(currentPage+1)">Next<span><i class="arrow-right icon"></i></span></a></p></div>
   </section>
 </template>
 
@@ -22,17 +23,20 @@
 
     data () {
       return {
-        lists: null
+        lists: null,
+        limit: 5,
+        currentPage: 0
       }
     },
 
     computed: {
+      totalPage () { return this.lists.length / this.limit },
       orderedList () {
         var keyword = this.$route.query.keyword || ''
-        // Filter by title, Order by publish date, desc
+        // Filter by title, Order by publish date, desc, Pagination
         return this.lists.filter(function (item) {
           return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
-        }).sort((a, b) => (new Date(b.date) - new Date(a.date)))
+        }).sort((a, b) => (new Date(b.date) - new Date(a.date))).slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))
       }
     },
 
@@ -41,6 +45,11 @@
     },
 
     methods: {
+      turnPage (destPage) {
+        if (destPage >= 0 && destPage < this.totalPage) {
+          this.currentPage = destPage
+        }
+      },
       loadList () {
         window.document.title = conf.blogTitle
         api.getList()
