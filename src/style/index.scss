@@ -100,7 +100,7 @@ a {
   display: inline-block;
   border: 0;
   line-height: 24px;
-  padding: 0.3em 0.3em;
+  padding: 0.6em 1em;
   margin: 0.5em;
   margin-bottom: 1em;
   outline: none;
@@ -121,6 +121,22 @@ a {
   }
 }
 
+/* do not group these rules */
+.title::-webkit-input-placeholder {
+    color: $textColor;
+}
+.title:-moz-placeholder {
+    /* FF 4-18 */
+    color: $textColor;
+}
+.title::-moz-placeholder {
+    /* FF 19+ */
+    color: $textColor;
+}
+.title:-ms-input-placeholder {
+    /* IE 10+ */
+    color: $textColor;
+}
 
 //
 // CSS Icons
@@ -193,8 +209,18 @@ a {
 }
 
 .list-item {
+  border-left: 1px $primaryColor dotted;
+  padding: 15px;
   position: relative;
   margin-bottom: 50px;
+  box-shadow: 1px 0px 1px 1px rgba(100,100,100,0.1);
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 1px 0px 2px 1px rgba(100,100,100,0.1);
+    .item-title {
+      color: $linkColor;
+    }
+  }
 }
 
 .item-title {
@@ -222,9 +248,6 @@ a {
 
 .post-view {
   margin: 0 40px 50px;
-  // a:hover {
-  //   border-bottom: 1px dashed $linkColor;
-  // }
 }
 
 .post-title {
@@ -267,29 +290,18 @@ blockquote {
   border-left: 4px solid #ddd;
 }
 
-// headers
-// .markdownIt-Anchor {
-//   opacity: 0.2;
-
-// }
-
-// .markdownIt-Anchor:hover {
-//   opacity: 1;
-// }
-
-// .table-of-contents {
-//   position: absolute;
-//   right: 0;
-//   top:0;
-// }
-
 //
 // Transition animation
 //
 // -----------------------------------------
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
+  transition: 0.1s
 }
 .fade-enter, .fade-leave-active {
-  opacity: 0
+  opacity: 0;
+  height: 0%;
+}
+
+.flip-list-move {
+  transition: transform 1s;
 }

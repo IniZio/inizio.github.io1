@@ -2,13 +2,13 @@
   <section class="list-view">
     <div v-if="!lists">loading..</div>
     <ol v-if="lists" class="list">
-      <li v-for="item in orderedList" class="list-item">
+      <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList" class="list-item">
         <router-link :to="'/post/' + item.sha" class="item-title">
           {{ item.title }}
         </router-link>
         <br>
         <time pubdate="pubdate" :datetime="item.date" class="item-date">{{ item.date | timeago }}</time>
-      </li>
+      </router-link>
     </ol>
     <div><p style="text-align: center"><a class="btn" @click="turnPage(currentPage-1)" ><span><i class="arrow-left icon"></i></span>Previous</a>|<a class="btn" @click="turnPage(currentPage+1)">Next<span><i class="arrow-right icon"></i></span></a></p></div>
   </section>
