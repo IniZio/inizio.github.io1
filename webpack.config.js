@@ -57,6 +57,13 @@ module.exports = {
         query: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(ttf)$/,
+        loader: 'file',
+        query: {
+          name: '[name].[ext]?[hash]'
+        }
       }
     ],
     noParse: [

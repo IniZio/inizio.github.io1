@@ -7,8 +7,8 @@
 
 $fontSize: 15px;
 
-$titleFontFamily: "Alegreya Sans SC";
-$fontFamily: "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+$titleFontFamily: tofinoThin, "Alegreya Sans SC";
+$fontFamily: tofinoThin, "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
 $monospaceFontFamily: "PT Mono", Consolas, Monaco, Menlo, monospace;
 
 $primaryColor: #5eccb6;
@@ -37,7 +37,7 @@ body {
   -webkit-text-size-adjust: none;
   // size
   position: relative;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0;
   background: $bgColor;
@@ -95,6 +95,7 @@ a {
     font-size: $fontSize + 2;
     letter-spacing: 5px;
     text-transform: uppercase;
+    transition: color 0.5s;
     // color: $textColor;
   }
 }
@@ -213,15 +214,15 @@ a {
 }
 
 .list-item {
-  border-left: 1px $primaryColor dotted;
+  border-left: 1px $primaryColor solid;
   border-radius: 0 5px 5px 0;
   padding: 20px;
   position: relative;
   margin-bottom: 50px;
-  box-shadow: 1px 0px 1px 1px rgba(100,100,100,0.1);
+  // box-shadow: 1px 0px 1px 1px rgba(100,100,100,0.1);
   transition: 0.2s;
   &:hover {
-    box-shadow: 1px 0px 2px 1px rgba(100,100,100,0.1);
+    // box-shadow: 1px 0px 2px 1px rgba(100,100,100,0.1);
     .item-title {
       color: $linkColor;
     }
@@ -242,7 +243,7 @@ a {
   display: inline-block;
   font-size: $fontSize - 2;
   color: $metaColor;
-  border-top: 1px solid $primaryColor;
+  border-top: 1px dotted $primaryColor;
   padding-top: 2px;
   cursor:default;
 }
