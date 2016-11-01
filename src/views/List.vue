@@ -4,7 +4,6 @@
     <ol v-if="lists" class="list">
       <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="list-item">
         <div class="item-property">
-          <div v-show="!item.tags[0]" class="item-property__tag" style="display:initial"></div>
           <div class="item-property__tag" v-for="tag in item.tags">
           {{tag}}
           </div>

@@ -183,6 +183,7 @@ a {
 
     }
     .item-summary {
+      display: inline-block;
       overflow: hidden;
       max-height: 80px;
       transition: max-height 0.1s ease-in;
@@ -230,6 +231,7 @@ a {
 }
 
 .item-summary {
+  display: none;
   text-align: left;
   max-height: 0;
   padding:0 10px;
