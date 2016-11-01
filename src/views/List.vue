@@ -3,11 +3,19 @@
     <div v-if="!lists">loading..</div>
     <ol v-if="lists" class="list">
       <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="list-item">
-        <router-link :to="'/post/' + item.sha" class="item-title">
-          {{ item.title }}
+        <div class="item-property">
+          <div v-show="!item.tags[0]" class="item-property__tag" style="display:initial"></div>
+          <div class="item-property__tag" v-for="tag in item.tags">
+          {{tag}}
+          </div>
+          <time pubdate="pubdate" :datetime="item.date" class="item-property__date">{{ item.date | timeago }}</time>
+        </div>
+        <router-link :to="'/post/' + item.sha">
+          <div class="item-title">{{ item.title }}</div>
         </router-link>
+        <div class="item-summary" v-html="htmlFromMarkdown(item.content)"></div>
         <br>
-        <time pubdate="pubdate" :datetime="item.date" class="item-date">{{ item.date | timeago }}</time>
+
       </router-link>
     </ol>
     <div><p style="text-align: center"><a class="btn" @click="turnPage(currentPage-1)" ><span><i class="arrow-left icon"></i></span>Previous</a>|<a class="btn" @click="turnPage(currentPage+1)">Next<span><i class="arrow-right icon"></i></span></a></p></div>
@@ -15,6 +23,21 @@
 </template>
 
 <script>
+  var md = require('markdown-it')({
+    html: true,
+    highlight: function (code, lang) {
+      // http://prismjs.com/extending.html#api
+      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
+    },
+    typography: true,
+    linkify: true
+  })
+  import Prism from 'prismjs'
+  import fm from 'front-matter'
+
+  md.use(require('markdown-it-katex'))
+  md.use(require('markdown-it-header-sections'))
+
   import api from '../api'
   import conf from '../conf.json'
 
@@ -45,6 +68,10 @@
     },
 
     methods: {
+      htmlFromMarkdown (content) {
+        // return md.render('@[toc](Title)' + this.content)
+        return md.render(content)
+      },
       turnPage (destPage) {
         if (destPage >= 0 && destPage < this.totalPage) {
           this.currentPage = destPage
@@ -54,6 +81,15 @@
         window.document.title = conf.blogTitle
         api.getList()
           .then(lists => {
+            lists.forEach(function (item) {
+              api.getDetail(item.sha).then(text => {
+                const content = fm(text)
+                item.content = content.body
+                item.tags = content.attributes.tags
+                // this.title = content.attributes.title
+                item.date = content.attributes.date || item.date
+              })
+            })
             this.lists = lists
           })
           .catch(() => { /* TODO */ })
