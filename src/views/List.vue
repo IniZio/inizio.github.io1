@@ -1,6 +1,6 @@
 <template>
   <section class="list-view">
-    <div v-if="!lists">loading..</div>
+    <div v-if="!lists" style="text-align:center">loading..</div>
     <ol v-if="lists" class="list">
       <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="list-item">
         <div class="item-property">
@@ -12,7 +12,8 @@
         <router-link :to="'/post/' + item.sha">
           <div class="item-title">{{ item.title }}</div>
         </router-link>
-        <div class="item-summary" v-html="htmlFromMarkdown(item.content)"></div>
+        <div class="item-desc" v-if="item.desc">{{item.desc}}</div>
+        <div class="item-desc" v-else v-html="htmlFromMarkdown(item.content)"></div>
         <br>
 
       </router-link>
@@ -84,6 +85,7 @@
               api.getDetail(item.sha).then(text => {
                 const content = fm(text)
                 item.content = content.body
+                item.desc = content.attributes.desc
                 item.tags = content.attributes.tags
                 // this.title = content.attributes.title
                 item.date = content.attributes.date || item.date

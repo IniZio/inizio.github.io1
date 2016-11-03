@@ -5,10 +5,11 @@
 // variable
 // -----------------------------------------
 
-$fontSize: 15px;
+$fontSize: 16px;
 
 $titleFontFamily: tofinoThin, "Alegreya Sans SC";
-$fontFamily: tofinoThin, "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+// $fontFamily: tofinoThin, "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+$fontFamily: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 $monospaceFontFamily: "PT Mono", Consolas, Monaco, Menlo, monospace;
 
 $primaryColor: #5eccb6;
@@ -30,6 +31,7 @@ $codeBgColor: #f1f1f1;
 body {
   // font
   font-family: $fontFamily;
+  font-weight: 300;
   font-size: $fontSize;
   line-height: 2;
   -webkit-font-smoothing: antialiased;
@@ -182,8 +184,8 @@ a {
       transition: max-height 0.1s ease-out;
 
     }
-    .item-summary {
-      display: inline-block;
+    .item-desc {
+      display: block;
       overflow: hidden;
       max-height: 80px;
       transition: max-height 0.1s ease-in;
@@ -220,7 +222,7 @@ a {
 }
 
 .item-title {
-  display: inline-block;
+  display: block;
   margin-top: 15px;
   margin-bottom: 10px;
   font-size: $fontSize + 6;
@@ -230,12 +232,14 @@ a {
   }
 }
 
-.item-summary {
+.item-desc {
   display: none;
   text-align: left;
   max-height: 0;
   padding:0 10px;
+  text-overflow: ellipisis;
   overflow: hidden;
+  white-space: nowrap;
   transition: max-height 0.2s ease-out;
 }
 
