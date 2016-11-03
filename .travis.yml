@@ -17,9 +17,9 @@ before_install:
   - git config --global user.name "inizio"
   - git config --global user.email "digit4free@gmail.com"
   - git clone --branch master https://github.com/IniZio/inizio.github.io.git dist
+  - npm i -g yarn --cache-min 999999999
 
 install:
-  - npm i -g yarn
   - yarn
 
 script:
