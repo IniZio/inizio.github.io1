@@ -4,16 +4,15 @@
     <ol v-if="lists" class="list">
       <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="list-item">
         <div class="item-property">
-          <div class="item-property__tag" v-for="tag in item.tags">
+          <router-link :to="'/?keyword=%23'+tag" class="item-property__tag" v-for="tag in item.tags">
           {{tag}}
-          </div>
+          </router-link>
           <time pubdate="pubdate" :datetime="item.date" class="item-property__date">{{ item.date | timeago }}</time>
         </div>
         <router-link :to="'/post/' + item.sha">
           <div class="item-title">{{ item.title }}</div>
         </router-link>
-        <div class="item-desc" v-if="item.desc">{{item.desc}}</div>
-        <div class="item-desc" v-else v-html="htmlFromMarkdown(item.content)"></div>
+        <div class="item-desc">{{item.desc}}</div>
         <br>
 
       </router-link>
@@ -23,20 +22,20 @@
 </template>
 
 <script>
-  var md = require('markdown-it')({
-    html: true,
-    highlight: function (code, lang) {
-      // http://prismjs.com/extending.html#api
-      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
-    },
-    typography: true,
-    linkify: true
-  })
-  import Prism from 'prismjs'
+  // var md = require('markdown-it')({
+  //   html: true,
+  //   highlight: function (code, lang) {
+  //     // http://prismjs.com/extending.html#api
+  //     return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
+  //   },
+  //   typography: true,
+  //   linkify: true
+  // })
+  // import Prism from 'prismjs'
   import fm from 'front-matter'
 
-  md.use(require('markdown-it-katex'))
-  md.use(require('markdown-it-header-sections'))
+  // md.use(require('markdown-it-katex'))
+  // md.use(require('markdown-it-header-sections'))
 
   import api from '../api'
   import conf from '../conf.json'
@@ -58,20 +57,23 @@
         var keyword = this.$route.query.keyword || ''
         // Filter by title, Order by publish date, desc, Pagination
         return this.lists.filter(function (item) {
-          return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+          if (keyword[0] !== '#') {
+            return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+          } else {
+            return item.tags.find((element) => element.indexOf(keyword.substring(1).toLowerCase()) !== -1)
+          }
         }).sort((a, b) => (new Date(b.date) - new Date(a.date)))
       }
     },
 
-    created () {
+    mounted () {
       this.loadList()
     },
 
     methods: {
-      htmlFromMarkdown (content) {
-        // return md.render('@[toc](Title)' + this.content)
-        return md.render(content)
-      },
+      // htmlFromMarkdown (content) {
+      //   return md.render(content)
+      // },
       turnPage (destPage) {
         if (destPage >= 0 && destPage < this.totalPage) {
           this.currentPage = destPage
@@ -84,8 +86,8 @@
             lists.forEach(function (item) {
               api.getDetail(item.sha).then(text => {
                 const content = fm(text)
-                item.content = content.body
-                item.desc = content.attributes.desc
+                // item.content = content.body
+                item.desc = content.attributes.desc || 'Click to view'
                 item.tags = content.attributes.tags
                 // this.title = content.attributes.title
                 item.date = content.attributes.date || item.date
