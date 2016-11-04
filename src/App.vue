@@ -3,7 +3,7 @@
     <header class="header">
       <input class="title search-bar" :placeholder="title" v-model="keyword" @keyup.esc="resetSearch" onclick="this.select()">
       <div style="clear: both"></div>
-      <a href="https://www.github.com/inizio" style="font-size: 70%">A Web Coder</a>
+      <router-link to="/" style="font-size: 70%">A Web Coder</router-link>
     </header>
     <transition appear name="fade" out-in><router-view></router-view></transition>
   </div>
@@ -11,7 +11,7 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:200');
-@import url('https://fonts.googleapis.com/css?family=Raleway:400');
+/*@import url('https://fonts.googleapis.com/css?family=Raleway:400');*/
 
 @font-face {
   font-family: tofinoThin;
