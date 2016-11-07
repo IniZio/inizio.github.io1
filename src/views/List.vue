@@ -1,8 +1,9 @@
 <template>
   <section class="list-view">
     <div v-if="!lists" style="text-align:center">loading..</div>
-    <ol v-if="lists" class="list">
-      <router-link :to="'/post/' + item.sha" tag="li" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="list-item">
+    <div v-if="lists" class="masonry">
+      <!-- <router-link :to="'/post/' + item.sha" tag="div" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="item list-item"> -->
+      <router-link :to="'/post/' + item.sha"  v-for="item in orderedList" tag="div" class="item list-item">
         <div class="item-property">
           <router-link :to="'/?keyword=%23'+tag" class="item-property__tag" v-for="tag in item.tags">
           {{tag}}
@@ -16,8 +17,8 @@
         <br>
 
       </router-link>
-    </ol>
-    <div><p style="text-align: center"><a class="btn" @click="turnPage(currentPage-1)" ><span><i class="arrow-left icon"></i></span>Previous</a>|<a class="btn" @click="turnPage(currentPage+1)">Next<span><i class="arrow-right icon"></i></span></a></p></div>
+    </div>
+    <!-- <div><p style="text-align: center"><a class="btn" @click="turnPage(currentPage-1)" ><span><i class="arrow-left icon"></i></span>Previous</a>|<a class="btn" @click="turnPage(currentPage+1)">Next<span><i class="arrow-right icon"></i></span></a></p></div> -->
   </section>
 </template>
 
