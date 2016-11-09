@@ -10,24 +10,23 @@ $fontSize: 16px;
 $titleFontFamily: tofinoThin, "Alegreya Sans SC";
 // $fontFamily: tofinoThin, "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
 $fontFamily: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-// $monospaceFontFamily: "PT Mono", Consolas, Monaco, Menlo, monospace;
-$monospaceFontFamily: "PT Mono", Menlo,Monaco,Consolas,Courier New,monospace;
+$monospaceFontFamily: "PT Mono", Consolas, Monaco, Menlo, monospace;
 
 $primaryColor: #5eccb6;
 $bgColor: rgb(250,250,250);
 $textColor: #555;
 $linkColor: darken($primaryColor, 20);
 $metaColor: #888;
-// $codeBgColor: #f1f1f1;
-$codeBgColor: none;
+$codeBgColor: #f1f1f1;
 
 //
 // common
 // -----------------------------------------
 
-::-moz-selection,
-::selection {
-  background: #B2D7FF;
+*::-moz-selection,
+*::selection {
+  color: white;
+  background-color: lighten($primaryColor, 10);
 }
 
 body {
