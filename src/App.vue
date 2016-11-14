@@ -3,7 +3,7 @@
     <header class="header">
       <input class="title search-bar" :placeholder="title" v-model="keyword" @keyup.esc="resetSearch" onclick="this.select()">
       <div style="clear: both"></div>
-      <router-link to="/" style="font-size: 70%">A Web Coder</router-link>
+      <router-link to="/" style="font-size: 70%">My Scribbles</router-link>
     </header>
     <transition appear name="fade" out-in><router-view></router-view></transition>
   </div>
