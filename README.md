@@ -6,7 +6,8 @@
 - [] lazy load list view item summary
 - [] can search for keywords/concepts in notes
 - [] replace pagination with infinite scroll maybe?
-- [] use local posts directory instead of remote in `npm run dev`
+- [] Categorize with Development, Study, Life, Game
 
 #Credit to:
-- [viko16](https://github.com/viko16/vue-ghpages-blog)
+- [viko16](https://github.com/viko16/vue-ghpages-blog) for blog boilerplate
+- [SendGrowth](https://www.sendgrowth.com/resources/realtime-counter/) for firebase view counter
