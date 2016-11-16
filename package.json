@@ -62,6 +62,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.0.0",
+    "firebase": "^3.6.1",
     "front-matter": "^2.1.0",
     "markdown-it": "^8.0.0",
     "markdown-it-header-sections": "^0.2.2",
