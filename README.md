@@ -7,6 +7,7 @@
 - [] can search for keywords/concepts in notes
 - [] replace pagination with infinite scroll maybe?
 - [] Categorize with Development, Study, Life, Game
+- [] Track history user have visited in one sesssion to ensure switching router link does not count the same page's view again
 
 #Credit to:
 - [viko16](https://github.com/viko16/vue-ghpages-blog) for blog boilerplate
