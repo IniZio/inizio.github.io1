@@ -2,10 +2,18 @@
 
 import Vue from 'vue'
 import router from './router'
+// import VueAnalytics from 'vue-analytics'
 
 import App from './App.vue'
 
 import './utils/filter'
+
+// Vue.use(VueAnalytics, { router, debug: true })
+
+// whether to allow vue-devtools inspection
+// false in production builds
+Vue.config.devtools = process.env.NODE_ENV !== 'production'
+
 
 const app = new Vue(
   Vue.util.extend({ router }, App)

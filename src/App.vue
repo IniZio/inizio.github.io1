@@ -1,7 +1,7 @@
 <template>
   <div id='app'>
     <header class="header">
-      <p style="position: absolute;top: 0;right: 0;padding: 0px 5px; background-color: rgba(230,230,230,0.5)">{{viewCount}} views</p>
+      <p class="view-counter">{{viewCount}} views</p>
       <input class="title search-bar" :placeholder="title" v-model="keyword" @keyup.esc="resetSearch" onclick="this.select()">
       <div style="clear: both"></div>
       <router-link to="/" style="font-size: 70%">My Scribbles</router-link>
@@ -17,6 +17,14 @@
 @font-face {
   font-family: tofinoThin;
   src: url('./font/Tofino Thin.ttf');
+}
+
+.view-counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0px 5px;
+  background-color: rgba(230,230,230,0.5)
 }
 </style>
 <style lang="sass" src="./style/index.scss"></style>
