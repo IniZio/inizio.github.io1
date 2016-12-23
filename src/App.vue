@@ -1,7 +1,6 @@
 <template>
   <div id='app'>
     <header class="header">
-      <p class="view-counter">{{viewCount}} views</p>
       <input class="title search-bar" :placeholder="title" v-model="keyword" @keyup.esc="resetSearch" onclick="this.select()">
       <div style="clear: both"></div>
       <router-link to="/" style="font-size: 70%">My Scribbles</router-link>
@@ -18,22 +17,11 @@
   font-family: tofinoThin;
   src: url('./font/Tofino Thin.ttf');
 }
-
-.view-counter {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0px 5px;
-  background-color: rgba(230,230,230,0.5)
-}
 </style>
 <style lang="sass" src="./style/index.scss"></style>
 
 <script>
-import Firebase from 'firebase'
-
 import conf from './conf.json'
-// import { updateViewCount } from './utils/viewcount'
 
 export default {
   data () {
@@ -47,70 +35,11 @@ export default {
     resetSearch: function () {
       this.keyword = ''
       document.getElementsByClassName('search-bar')[0].blur()
-    },
-    updateViewCount: function () {
-      var Database = Firebase.database()
-      var pageURL = document.URL.split('.').join('_').split('/').join('*').split('#').join('*')
-      var domain = window.location.host
-      var rootRef = null
-      var pagePref = 'one'
-      var choice
-
-      if (pagePref === 'one') {
-        // rootRef = Database.ref(pageURL.split('.').join('_'))
-        rootRef = Database.ref(pageURL)
-      } else {
-        rootRef = Database.ref(domain.split('.').join('_'))
-        // rootRef = Database.ref(pageURL)
-      }
-
-      rootRef.transaction((currentData) => {
-        var obj
-        if (currentData === null) {
-          obj = {total: 1}
-          obj[pageURL] = {total: 1}
-          return obj
-        } else {
-          if (currentData[pageURL] === null) {
-            obj = {total: currentData.total + 1}
-            obj[pageURL] = {total: 1}
-            return obj
-          } else {
-            obj = {total: currentData.total + 1}
-            obj[pageURL] = {total: currentData[pageURL].total + 1}
-            return obj
-          }
-        }
-      }, (error, committed, snapshot) => {
-        if (error) {
-          return false
-        } else if (!committed) {
-          return false
-        }
-        if (pagePref === 'all') { choice = snapshot.val().total }
-        if (pagePref === 'one') { choice = snapshot.val()[pageURL].total }
-        this.viewCount = choice
-      })
     }
-  },
-  mounted () {
-    var config = {
-      apiKey: 'AIzaSyDYaMu9kzyrF3g915_B9AB5ONHXvOPfdlg',
-      authDomain: 'counter-650e8.firebaseapp.com',
-      databaseURL: 'https://counter-650e8.firebaseio.com',
-      storageBucket: 'counter-650e8.appspot.com',
-      messagingSenderId: '705101739547'
-    }
-    Firebase.initializeApp(config)
-    this.updateViewCount()
   },
   watch: {
     keyword: function () {
       this.$router.push({name: 'list', query: {'keyword': this.keyword}})
-    },
-    '$route.path': function (newPath) {
-      this.updateViewCount()
-      // console.log(this.viewCount)
     }
   }
 }
