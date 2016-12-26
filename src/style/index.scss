@@ -1,6 +1,17 @@
 @import '~normalize.css';
 @import '~prismjs/themes/prism.css';
 
+@import url('//fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:200');
+
+@font-face {
+  font-family: 'tofinoThin';
+  src: url('../font/Tofino Thin.ttf');
+}
+@font-face {
+  font-family: 'Fira Code';
+  src: url('../font/FiraCode-Regular.otf') format('opentype');
+}
+
 //
 // variable
 // -----------------------------------------
@@ -14,7 +25,7 @@ $fontSize: 16px;
 $titleFontFamily: tofinoThin, "Alegreya Sans SC";
 // $fontFamily: tofinoThin, "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
 $fontFamily: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-$monospaceFontFamily: "PT Mono", Consolas, Monaco, Menlo, monospace;
+$monospaceFontFamily: 'Fira Code', "PT Mono", Consolas, Monaco, Menlo, monospace;
 
 $primaryColor: #5eccb6;
 $bgColor: rgb(250,250,250);
@@ -79,12 +90,16 @@ h1 {
   font-weight: 300;
 }
 
-code[class*="language-"], pre[class*="language-"] {
-  line-height: 1.1;
-  font-size: 13px;
+code[class^="language-"], pre[class^="language-"] {
+  line-height: 1.5;
+  font-size: 12px;
   font-weight: 300;
   tab-size: 2;
   font-family: $monospaceFontFamily;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   // margin: 0 60px;
   // padding: 30px;
 }
@@ -339,7 +354,7 @@ a {
 // -----------------------------------------
 
 .post-view {
-  margin: 0 100px;
+  margin: 0 50px;
   background-color: lighten($bgColor, 1);
   padding: 30px 100px;
   @media screen and (max-width: $break-medium) {
@@ -382,6 +397,10 @@ pre {
 code {
   background: $codeBgColor;
   font-family: $monospaceFontFamily !important;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   padding: 3px 5px;
   border-radius: 4px;
 }

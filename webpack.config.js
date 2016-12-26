@@ -62,7 +62,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(ttf)$/,
+        test: /\.(ttf|otf)$/,
         loader: 'file',
         query: {
           name: '[name].[ext]?[hash]'
