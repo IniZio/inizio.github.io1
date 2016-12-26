@@ -1,8 +1,8 @@
 <template>
-  <section class="list-view">
+  <section>
+    <a @click="refresh">bbb</a>
     <div v-if="!lists" style="text-align:center">loading..</div>
     <div v-if="lists" class="masonry">
-      <!-- <router-link :to="'/post/' + item.sha" tag="div" v-for="item in orderedList.slice(this.limit * this.currentPage, this.limit * (this.currentPage + 1))" class="item list-item"> -->
       <router-link :to="'/post/' + item.sha"  v-for="item in orderedList" tag="div" class="item list-item">
         <div class="item-property">
           <router-link :to="'/?keyword=%23'+tag" class="item-property__tag" v-for="tag in item.tags">
@@ -15,28 +15,13 @@
         </router-link>
         <div class="item-desc">{{item.desc}}</div>
         <br>
-
       </router-link>
     </div>
-    <!-- <div><p style="text-align: center"><a class="btn" @click="turnPage(currentPage-1)" ><span><i class="arrow-left icon"></i></span>Previous</a>|<a class="btn" @click="turnPage(currentPage+1)">Next<span><i class="arrow-right icon"></i></span></a></p></div> -->
   </section>
 </template>
 
 <script>
-  // var md = require('markdown-it')({
-  //   html: true,
-  //   highlight: function (code, lang) {
-  //     // http://prismjs.com/extending.html#api
-  //     return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
-  //   },
-  //   typography: true,
-  //   linkify: true
-  // })
-  // import Prism from 'prismjs'
   import fm from 'front-matter'
-
-  // md.use(require('markdown-it-katex'))
-  // md.use(require('markdown-it-header-sections'))
 
   import api from '../api'
   import conf from '../conf.json'
@@ -48,7 +33,8 @@
       return {
         lists: null,
         limit: 5,
-        currentPage: 0
+        currentPage: 0,
+        tagList: new Set()
       }
     },
 
@@ -69,12 +55,19 @@
 
     mounted () {
       this.loadList()
+      // console.log('hi')
+      // console.log(this.tagList.size)
+      // for (let tag of this.tagList) console.log(tag)
+      // console.log('bye')
     },
 
     methods: {
       // htmlFromMarkdown (content) {
       //   return md.render(content)
       // },
+      refresh () {
+        for (let tag of this.tagList) console.log(tag)
+      },
       turnPage (destPage) {
         if (destPage >= 0 && destPage < this.totalPage) {
           this.currentPage = destPage
@@ -90,6 +83,7 @@
                 // item.content = content.body
                 item.desc = content.attributes.desc || 'Click to view'
                 item.tags = content.attributes.tags
+                for (let tag of item.tags) this.tagList.add(tag)
                 // this.title = content.attributes.title
                 item.date = content.attributes.date || item.date
               })

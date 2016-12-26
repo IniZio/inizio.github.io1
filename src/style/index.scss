@@ -1,12 +1,12 @@
 @import '~normalize.css';
 @import '~prismjs/themes/prism.css';
-
+@import './flexboxgrid.min.css';
 @import url('//fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:200');
-
 @font-face {
   font-family: 'tofinoThin';
   src: url('../font/Tofino Thin.ttf');
 }
+
 @font-face {
   font-family: 'Fira Code';
   src: url('../font/FiraCode-Regular.otf') format('opentype');
@@ -15,29 +15,38 @@
 //
 // variable
 // -----------------------------------------
-
 $break-small: 320px;
-$break-medium: 768px;
-$break-large: 1024px;
-
+$break-medium: 640px;
+$break-big: 960px; 
+$break-large: 1440px;
 $fontSize: 16px;
+$titleFontFamily: 'tofinoThin',
+"Alegreya Sans SC";
 
-$titleFontFamily: tofinoThin, "Alegreya Sans SC";
-// $fontFamily: tofinoThin, "Raleway", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-$fontFamily: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-$monospaceFontFamily: 'Fira Code', "PT Mono", Consolas, Monaco, Menlo, monospace;
+$fontFamily: 'Lato',
+"PingFang SC",
+"Microsoft YaHei",
+sans-serif;
+
+$monospaceFontFamily: "Fira Code",
+"PT Mono",
+Consolas,
+Monaco,
+Menlo,
+monospace;
 
 $primaryColor: #5eccb6;
-$bgColor: rgb(250,250,250);
+$bgColor: rgb(250,
+250,
+250);
 $textColor: #555;
-$linkColor: darken($primaryColor, 20);
+$linkColor: darken($primaryColor,
+20);
 $metaColor: #888;
 $codeBgColor: #f9f9f9;
-
 //
 // common
 // -----------------------------------------
-
 // Remove selection border on mobiles
 * {
   -webkit-touch-callout: none;
@@ -47,7 +56,6 @@ $codeBgColor: #f9f9f9;
   -ms-user-select: none;
   user-select: none;
 }
-
 
 *::-moz-selection,
 *::selection {
@@ -60,21 +68,20 @@ body {
   font-family: $fontFamily;
   font-weight: 300;
   font-size: $fontSize;
-  line-height: 2;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: none;
   // size
   position: relative;
   // max-width: 700px;
-  max-width: 1100px;
+  // max-width: 1100px;
   // max-width: 80%;
   margin: 0 auto;
   padding: 0;
   background: $bgColor;
   color: $textColor;
 }
-
 
 h1,
 h2,
@@ -90,8 +97,8 @@ h1 {
   font-weight: 300;
 }
 
-code[class^="language-"], pre[class^="language-"] {
-  line-height: 1.5;
+code[class^="language-"],
+pre[class^="language-"] {
   font-size: 12px;
   font-weight: 300;
   tab-size: 2;
@@ -106,28 +113,54 @@ code[class^="language-"], pre[class^="language-"] {
 
 .post-title {
   // border-bottom: 1px rgba(120,120,120,0.2) solid;
-  text-align: center;
+  // text-align: center;
   padding-bottom: 10px;
 }
 
 .title {
+  margin: 0;
   cursor: default;
   font-size: 50px;
   font-family: $titleFontFamily, $fontFamily;
-  max-width: 100%;
+  // max-width: 100%;
 }
 
 .search-bar {
-  text-align: center;
-  border:none;
+  // text-align: center;
+  text-align: right;
+  border: none;
   background-color: $bgColor;
-  transition: background-color 0.4s;
+  font-family: $titleFontFamily, $fontFamily;
+  transition: background-color 0.2s;
+  max-width: 100%;
+  font-size: 30px;
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: darken($bgColor, 2);
+    text-decoration: none;
+  }
 }
 
-.search-bar:hover, .search-bar:focus, .search-bar:active {
-  outline: none;
-  background-color: darken($bgColor, 2);
-  text-decoration: none;
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: $linkColor;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: $linkColor;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: $linkColor;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: $linkColor;
 }
 
 a {
@@ -141,15 +174,27 @@ a {
 }
 
 .header {
-  margin: 50px auto;
-  text-align: center;
+  // margin: 50px auto;
+  // letter-spacing: 5px;
+  margin-top: 50px;
+  padding-right: 20px;
+  text-align: right;
+  text-transform: uppercase;
   a {
-    font-size: $fontSize + 2;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+    // font-size: $fontSize + 2;
+    letter-spacing: initial;
+    font-size: 30px;
     transition: color 0.5s;
+    text-transform: initial;
     // color: $textColor;
   }
+}
+
+.page-list {
+  list-style-type: none;
+  text-align: right;
+  font-size: 30px;
+  font-family: $titleFontFamily, $fontFamily;
 }
 
 .btn {
@@ -164,41 +209,45 @@ a {
   text-decoration: none;
   color: #666;
   transition: background-color 0.2s;
-
   span {
     margin-left: 7px;
     margin-right: 25px;
   }
-
-  &:hover, &:active, &:focus {
-    background-color: darken($bgColor,1);
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: darken($bgColor, 1);
     .arrow {
-      background-color: darken($bgColor,1);
+      background-color: darken($bgColor, 1);
     }
   }
 }
 
+
 /* do not group these rules */
+
 .title::-webkit-input-placeholder {
-    color: $textColor;
+  color: $textColor;
 }
+
 .title:-moz-placeholder {
-    /* FF 4-18 */
-    color: $textColor;
+  /* FF 4-18 */
+  color: $textColor;
 }
+
 .title::-moz-placeholder {
-    /* FF 19+ */
-    color: $textColor;
+  /* FF 19+ */
+  color: $textColor;
 }
+
 .title:-ms-input-placeholder {
-    /* IE 10+ */
-    color: $textColor;
+  /* IE 10+ */
+  color: $textColor;
 }
 
 //
 // List View
 // -----------------------------------------
-
 .list-view {
   margin: 0 20px;
   ol,
@@ -209,75 +258,68 @@ a {
 }
 
 .masonry {
-    margin: 1.5em 0;
-    padding: 0;
-    -moz-column-gap: 1.5em;
-    -webkit-column-gap: 1.5em;
-    column-gap: 1.5em;
-    font-size: .85em;
+  margin: 50px 0;
+  padding: 0;
+  -moz-column-gap: 1.5em;
+  -webkit-column-gap: 1.5em;
+  column-gap: 1.5em;
+  font-size: .85em;
+  @media only screen and (min-width: $break-small) {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+    margin: inherit 20px;
+  }
+  @media only screen and (min-width: $break-medium) {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+    padding: 0 25px;
+  }
+  @media only screen and (min-width: $break-big) {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+  @media only screen and (min-width: $break-large) {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 1260px;
+  }
 }
 
 .item {
-    display: inline-block;
-    background: #fff;
-    // padding: 1em;
-    // margin: 0 0 1.5em;
-    width: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-@media only screen and (min-width: $break-small) {
-    .masonry {
-        -moz-column-count: 1;
-        -webkit-column-count: 1;
-        column-count: 1;
-    }
-}
-
-@media only screen and (min-width: $break-medium) {
-    .masonry {
-        -moz-column-count: 2;
-        -webkit-column-count: 2;
-        column-count: 2;
-    }
-}
-
-@media only screen and (min-width: $break-large) {
-    .masonry {
-        -moz-column-count: 3;
-        -webkit-column-count: 3;
-        column-count: 3;
-    }
-}
-
-@media only screen and (min-width: 1280px) {
-    .wrapper {
-        width: 1260px;
-    }
+  display: inline-block;
+  background: #fff;
+  // padding: 1em;
+  // margin: 0 0 1.5em;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 .list-item {
   min-height: 160px;
   max-height: 160px;
-
   margin: 0 auto;
   // width: 75%;
   background-color: white;
   text-align: center;
-  // border: 1px 1px 0px 0px $primaryColor solid;
+  border: 1px 1px 0px 0px $primaryColor solid;
   // padding: 20px;
   // padding-bottom: 20px;
   position: relative;
   margin-bottom: 40px;
-  // box-shadow: 0px 0px 2px 2px rgba(150,150,150,0.1);
+  box-shadow: 0px 0px 1px 1px rgba(150,150,150,0.1);
+  border-radius: 10px;
   transition: 0.2s;
   cursor: pointer;
   &:hover {
-    // box-shadow: 0px 0px 2px 2px rgba(100,100,100,0.15);
-    box-shadow: 0px 0px 1px 1px rgba(150,150,150,0.15);
-
+    box-shadow: 0px 0px 2px 2px rgba(150, 150, 150, 0.1);
     .item-title {
       color: $linkColor;
       margin-top: 0;
@@ -286,7 +328,6 @@ a {
     // .item-property {
     //   max-height: 0px;
     //   transition: max-height 0.1s ease-out;
-
     // }
     .item-desc {
       text-align: center;
@@ -302,15 +343,15 @@ a {
   overflow: hidden;
   transition: max-height 0.1s ease-in;
   max-height: 40px;
-  margin: 0 5px;
+  margin: 3px 5px;
   text-align: left;
   // border-bottom: 1px solid $primaryColor;
   .item-property__tag {
     font-size: 85%;
     display: inline-block;
     margin-right: 7px;
-    &:before{
-      content:  '•';
+    &:before {
+      content: '#';
       color: darken($primaryColor, 20);
     }
   }
@@ -322,7 +363,7 @@ a {
     color: $metaColor;
     // border-left: 1px dotted $primaryColor;
     padding-top: 2px;
-    cursor:default;
+    cursor: default;
   }
 }
 
@@ -342,7 +383,7 @@ a {
   display: none;
   text-align: left;
   max-height: 0;
-  padding:0 10px;
+  padding: 0 10px;
   text-overflow: ellipisis;
   overflow: hidden;
   white-space: nowrap;
@@ -352,11 +393,10 @@ a {
 //
 // Post View
 // -----------------------------------------
-
 .post-view {
-  margin: 0 50px;
+  margin: 0 10px;
   background-color: lighten($bgColor, 1);
-  padding: 30px 100px;
+  padding: 30px 20px;
   @media screen and (max-width: $break-medium) {
     margin: 0;
     padding: 30px 50px;
@@ -385,12 +425,12 @@ a {
 
 pre {
   background: $codeBgColor !important;
-  padding: 10px 30px;
-  margin: 20px;
-  // padding: 16px;
+  // background: #474949 !important;
+  padding: 20px;
+  // margin: 20px;
   border-left: 1px dashed $primaryColor;
   border-radius: 15px;
-  overflow-x: hidden;
+  overflow-x: auto;
   white-space: pre;
 }
 
@@ -403,6 +443,7 @@ code {
   text-rendering: optimizeLegibility;
   padding: 3px 5px;
   border-radius: 4px;
+  line-height: 1.5em;
 }
 
 blockquote {
@@ -414,7 +455,6 @@ blockquote {
 //
 // CSS Icons
 // -----------------------------------------
-
 .icon {
   display: inline-block;
 }
@@ -440,9 +480,8 @@ blockquote {
   border-top: solid 1px darken($primaryColor, 20);
   border-right: solid 1px darken($primaryColor, 20);
   -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
-
 
 // arrow-right
 .arrow-right.icon {
@@ -465,17 +504,20 @@ blockquote {
   border-top: solid 1px darken($primaryColor, 20);
   border-right: solid 1px darken($primaryColor, 20);
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 //
 // Transition animation
 //
 // -----------------------------------------
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: all 0.5s ease;
 }
-.fade-enter, .fade-leave {
+
+.fade-enter,
+.fade-leave {
   opacity: 0;
   transform: translate3d(0, -20px, 0);
 }
