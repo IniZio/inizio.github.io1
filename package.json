@@ -62,6 +62,7 @@
     "webpack-dev-server": "2.1.0-beta.0"
   },
   "dependencies": {
+    "clipboard": "^1.5.16",
     "es6-promise": "^4.0.0",
     "firebase": "^3.6.1",
     "front-matter": "^2.1.0",

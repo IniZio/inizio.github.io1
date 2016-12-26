@@ -13,11 +13,13 @@
   import Vue from 'vue'
   import api from '../api'
   import conf from '../conf.json'
+
+  import Clipboard from 'clipboard'
   var md = require('markdown-it')({
     html: true,
     highlight: function (code, lang) {
       // http://prismjs.com/extending.html#api
-      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
+      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript) + '<button class="btn" style="float: right" data-clipboard-text="' + code + '">Copy to clipboard</button><div style="content: "";clear: both"></div>'
     },
     typography: true,
     linkify: true
@@ -53,6 +55,20 @@
 
     mounted () {
       this.loadPost()
+
+      var clipboard = new Clipboard('.btn')
+
+      clipboard.on('success', function (e) {
+        e.trigger.innerText = 'Copied!'
+        setTimeout(function () { e.trigger.innerText = 'Copy to clipboard' }, 1500, e)
+        e.clearSelection()
+      })
+
+      clipboard.on('error', function (e) {
+        e.trigger.innerText = 'Copy Failed!'
+        setTimeout(function () { e.trigger.innerText = 'Copy to clipboard' }, 2000, e)
+        e.clearSelection()
+      })
     },
 
     methods: {
