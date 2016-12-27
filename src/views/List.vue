@@ -1,7 +1,6 @@
 <template>
   <section>
-    <a @click="refresh">bbb</a>
-    <div v-if="!lists" style="text-align:center">loading..</div>
+    <div v-if="!lists" style="text-align:center">loading...</div>
     <div v-if="lists" class="masonry">
       <router-link :to="'/post/' + item.sha"  v-for="item in orderedList" tag="div" class="item list-item">
         <div class="item-property">
@@ -55,10 +54,6 @@
 
     mounted () {
       this.loadList()
-      // console.log('hi')
-      // console.log(this.tagList.size)
-      // for (let tag of this.tagList) console.log(tag)
-      // console.log('bye')
     },
 
     methods: {

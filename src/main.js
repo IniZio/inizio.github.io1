@@ -1,14 +1,11 @@
 'use strict'
 
 import Vue from 'vue'
-import router from './router'
-// import VueAnalytics from 'vue-analytics'
-
-import App from './App.vue'
 
 import './utils/filter'
 
-// Vue.use(VueAnalytics, { router, debug: true })
+import router from './router'
+import App from './App.vue'
 
 // whether to allow vue-devtools inspection
 // false in production builds
