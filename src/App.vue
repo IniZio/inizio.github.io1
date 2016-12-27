@@ -11,7 +11,7 @@
           <li><router-link to="/" style="">Home</router-link></li>
           <li>
             <input class="search-bar" 
-                placeholder="Search "
+                placeholder="Search"
                 v-model="keyword"
                 @keyup.esc="resetSearch"
                 onclick="this.select()">
