@@ -16,8 +16,8 @@
   import api from '../api'
   import conf from '../conf.json'
 
-  import Prism from 'prismjs'
-  // import Prism from '../vendor/prism.min.js'
+  // import Prism from 'prismjs'
+  import Prism from '../vendor/prism.min'
   // import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
   var md = require('markdown-it')({
     html: true,
@@ -25,8 +25,9 @@
       // http://prismjs.com/extending.html#api
       let head = '<pre class="line-numbers '
       let tail = '</pre>'
+      if (lang === 'sh') lang = 'bash'
       return head + (lang === 'bash' ? 'command-line ' : '') + (Prism.languages[lang] === undefined ? 'language-javascript' : 'language-' + lang) + '">' +
-             '<div style="position: relative; width: 0; height: 0"></div><button class="btn copy-btn" data-clipboard-text="' + code + '">Copy</span></button><div style="clear: both"></div>' +
+             '<button class="btn copy-btn" data-clipboard-text="' + code + '">Copy</span></button><div style="clear: both"></div>' +
              Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript) +
              tail
     },
