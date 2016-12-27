@@ -1,5 +1,7 @@
 @import '~normalize.css';
-@import '~prismjs/themes/prism.css';
+@import '~prismjs/themes/prism-okaidia.css';
+// @import '../vendor/prism.min.css';
+// @import '~prismjs/plugins/line-numbers/prism-line-numbers.css';
 @import './flexboxgrid.min.css';
 @import url('//fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Lato:200');
 @font-face {
@@ -43,18 +45,30 @@ $textColor: #555;
 $linkColor: darken($primaryColor,
 20);
 $metaColor: #888;
-$codeBgColor: #f9f9f9;
+// $codeBgColor: #f9f9f9;
+$codeBgColor: #272822;
+
 //
 // common
 // -----------------------------------------
 // Remove selection border on mobiles
 * {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  @media only screen and (min-width: $break-small) {
+    -webkit-touch-callout: none;
+    -webkit-user-select:   none;
+    -khtml-user-select:    none;
+    -moz-user-select:      none;
+    -ms-user-select:       none;
+    user-select:           none;
+  }
+  @media only screen and (min-width: $break-medium) {
+    -webkit-touch-callout: initial;
+    -webkit-user-select:   initial;
+    -khtml-user-select:    initial;
+    -moz-user-select:      initial;
+    -ms-user-select:       initial;
+    user-select:           initial;
+  }
 }
 
 *::-moz-selection,
@@ -97,18 +111,28 @@ h1 {
   font-weight: 300;
 }
 
-code[class^="language-"],
-pre[class^="language-"] {
-  font-size: 12px;
-  font-weight: 300;
-  tab-size: 2;
-  font-family: $monospaceFontFamily;
+code {
+  padding: 5px;
+  font-size: 12.5px;
+  color: #f8f8f2;
+}
+
+code,
+// code[class*="language-"],
+pre[class*="language-"] {
+//   // font-size: 10px;
+//   font-weight: 300;
+//   tab-size: 2;
+//   font-family: $monospaceFontFamily;
+//   // margin: 0 60px;
+//   // padding: 30px;
+  background: $codeBgColor;
+  font-family: $monospaceFontFamily !important;
   -webkit-font-feature-settings: "liga" on, "calt" on;
   font-feature-settings: "liga" on, "calt" on;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  // margin: 0 60px;
-  // padding: 30px;
+  border-radius: 10px;
 }
 
 .post-title {
@@ -120,7 +144,7 @@ pre[class^="language-"] {
 .title {
   margin: 0;
   cursor: default;
-  font-size: 50px;
+  font-size: 45px;
   font-family: $titleFontFamily, $fontFamily;
   // max-width: 100%;
 }
@@ -147,17 +171,14 @@ pre[class^="language-"] {
   /* Chrome/Opera/Safari */
   color: $linkColor;
 }
-
 ::-moz-placeholder {
   /* Firefox 19+ */
   color: $linkColor;
 }
-
 :-ms-input-placeholder {
   /* IE 10+ */
   color: $linkColor;
 }
-
 :-moz-placeholder {
   /* Firefox 18- */
   color: $linkColor;
@@ -423,28 +444,32 @@ a {
   color: $metaColor;
 }
 
-pre {
-  background: $codeBgColor !important;
-  // background: #474949 !important;
-  padding: 20px;
-  // margin: 20px;
-  border-left: 1px dashed $primaryColor;
-  border-radius: 15px;
-  overflow-x: auto;
-  white-space: pre;
+.copy-btn {
+  font-size: 15px;
+  line-height: 1;
+  margin: 0;
+  margin-top: -5px;
+  // float: right;
+  position: absolute; 
+  right: 50px;
+  border-radius: 5px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.75;
+    transition: opacity 0.3s;
+  }
 }
 
-code {
-  background: $codeBgColor;
-  font-family: $monospaceFontFamily !important;
-  -webkit-font-feature-settings: "liga" on, "calt" on;
-  font-feature-settings: "liga" on, "calt" on;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding: 3px 5px;
-  border-radius: 4px;
-  line-height: 1.5em;
-}
+// pre {
+//   background: $codeBgColor !important;
+//   // background: #474949 !important;
+//   padding: 20px;
+//   // margin: 20px;
+//   border-left: 1px dashed $primaryColor;
+//   border-radius: 15px;
+//   overflow-x: auto;
+//   white-space: pre;
+// }
 
 blockquote {
   margin: 0;

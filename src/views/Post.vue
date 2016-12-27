@@ -11,20 +11,30 @@
 
 <script>
   import Vue from 'vue'
+  import Clipboard from 'clipboard'
+
   import api from '../api'
   import conf from '../conf.json'
 
-  import Clipboard from 'clipboard'
+  import Prism from 'prismjs'
+  // import Prism from '../vendor/prism.min.js'
+  // import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
   var md = require('markdown-it')({
     html: true,
     highlight: function (code, lang) {
       // http://prismjs.com/extending.html#api
-      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript) + '<button class="btn" style="float: right" data-clipboard-text="' + code + '">Copy to clipboard</button><div style="content: "";clear: both"></div>'
+      let head = '<pre class="line-numbers '
+      let tail = '</pre>'
+      return head + (lang === 'bash' ? 'command-line ' : '') + (Prism.languages[lang] === undefined ? 'language-javascript' : 'language-' + lang) + '">' +
+             '<div style="position: relative; width: 0; height: 0"></div><button class="btn copy-btn" data-clipboard-text="' + code + '">Copy</span></button><div style="clear: both"></div>' +
+             Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript) +
+             tail
     },
     typography: true,
     linkify: true
   })
-  import Prism from 'prismjs'
+  // import 'prismjs/plugins/line-numbers/prism-line-numbers.min'
+  // Prism.highlightAll()
   import fm from 'front-matter'
 
   md.use(require('markdown-it-katex'))
@@ -55,18 +65,19 @@
 
     mounted () {
       this.loadPost()
+      Prism.highlightAll()
 
       var clipboard = new Clipboard('.btn')
 
       clipboard.on('success', function (e) {
         e.trigger.innerText = 'Copied!'
-        setTimeout(function () { e.trigger.innerText = 'Copy to clipboard' }, 1500, e)
+        setTimeout(function () { e.trigger.innerText = 'Copy' }, 1500, e)
         e.clearSelection()
       })
 
       clipboard.on('error', function (e) {
         e.trigger.innerText = 'Copy Failed!'
-        setTimeout(function () { e.trigger.innerText = 'Copy to clipboard' }, 2000, e)
+        setTimeout(function () { e.trigger.innerText = 'Copy' }, 2000, e)
         e.clearSelection()
       })
     },
