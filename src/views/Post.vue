@@ -66,9 +66,9 @@
 
     mounted () {
       this.loadPost()
-      Prism.highlightAll()
+      // Prism.highlightAll()
 
-      var clipboard = new Clipboard('.btn')
+      var clipboard = new Clipboard('.copy-btn')
 
       clipboard.on('success', function (e) {
         e.trigger.innerText = 'Copied!'

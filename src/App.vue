@@ -1,7 +1,7 @@
 <template>
   <div id='app'>
     <div class="row" style="margin: 0">
-      <header class="header col-xs-3">
+      <header class="header col-xs-0 col-md-3">
         <div class="title" style="line-height: 1" 
           @mouseenter="title = 'Know Me'"
           @mouseout="title = blogTitle">{{title}}</div>
@@ -18,7 +18,11 @@
           </li>
         </ul>
       </header>
-      <div class="col-xs-9"><transition appear name="fade" out-in><router-view></router-view></transition></div>
+      <div class="col-xs-12 col-md-9">
+        <transition appear name="fade" out-in>
+          <router-view></router-view>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
