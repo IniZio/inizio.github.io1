@@ -27,7 +27,7 @@
       let tail = '</pre>'
       if (lang === 'sh') lang = 'bash'
       return head + (lang === 'bash' ? 'command-line ' : '') + (Prism.languages[lang] === undefined ? 'language-javascript' : 'language-' + lang) + '">' +
-             '<button class="btn copy-btn" data-clipboard-text="' + code + '">Copy</span></button><div style="clear: both"></div>' +
+            '<button class="btn copy-btn" data-clipboard-text="' + (code + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0') + '">Copy</span></button><div style="clear: both"></div>' +
              Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript) +
              tail
     },
