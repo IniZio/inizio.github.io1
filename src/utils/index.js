@@ -35,5 +35,5 @@ export function onlyTitle (title) {
  * @returns
  */
 export function onlyDate (title) {
-  return /^\d{4}-\d{1,2}-\d{1,2}/.exec(title)[0]
+  return !!/^\d{4}-\d{1,2}-\d{1,2}/.exec(title) && /^\d{4}-\d{1,2}-\d{1,2}/.exec(title)[0]
 }
