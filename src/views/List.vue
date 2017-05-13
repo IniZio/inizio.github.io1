@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import fm from 'front-matter'
+  // import fm from 'front-matter'
 
   import api from '../api'
   import conf from '../conf.json'
@@ -71,20 +71,20 @@
       loadList () {
         window.document.title = conf.blogTitle
         api.getList()
-          .then(lists => {
-            lists.forEach(function (item) {
-              api.getDetail(item.sha).then(text => {
-                const content = fm(text)
-                // item.content = content.body
-                item.desc = content.attributes.desc || 'Click to view'
-                item.tags = content.attributes.tags
-                for (let tag of item.tags) this.tagList.add(tag)
-                // this.title = content.attributes.title
-                item.date = content.attributes.date || item.date
-              })
-            })
-            this.lists = lists
-          })
+          // .then(lists => {
+          //   lists.forEach(function (item) {
+          //     api.getDetail(item.sha).then(text => {
+          //       const content = fm(text)
+          //       // item.content = content.body
+          //       item.desc = content.attributes.desc || 'Click to view'
+          //       item.tags = content.attributes.tags
+          //       for (let tag of item.tags) this.tagList.add(tag)
+          //       // this.title = content.attributes.title
+          //       item.date = content.attributes.date || item.date
+          //     })
+          //   })
+          //   this.lists = lists
+          // })
           .catch(() => { /* TODO */ })
       }
     },
