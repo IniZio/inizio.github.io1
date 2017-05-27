@@ -1,0 +1,13 @@
+[ignore]
+./fuse.js
+.*/tsconfig.json
+.*/d.json
+
+[include]
+*.jsx
+
+[libs]
+
+[options]
+module.name_mapper='.*\(.css\)' -> 'empty/object'
+module.name_mapper='.*\(.scss\)' -> 'empty/object'

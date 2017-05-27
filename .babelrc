@@ -1,0 +1,9 @@
+{
+    "sourceMaps": true,
+    "presets": ["es2015", "flow"],
+    "plugins": [
+        "transform-react-jsx",
+        "transform-class-properties",
+        "transform-decorators"
+    ]
+}
