@@ -10,9 +10,12 @@ const {
   WebIndexPlugin
 } = require('fuse-box');
 const rimraf = require('rimraf');
+const fs = require('fs');
+const path = require('path');
+// const express = require('express');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const CSSPath = './dist';
+const dist = path.resolve('./dist');
 
 /**
  * Fuse options
@@ -32,12 +35,12 @@ const fuse = new FuseBox({
     [
       SassPlugin(),
       CSSPlugin({
-        outFile: file => `${CSSPath}/${file.replace('scss', 'css')}`,
+        outFile: file => `${dist}/${file.replace('scss', 'css')}`,
         inject: file => `${file.replace('scss', 'css')}`
       })
     ],
     CSSPlugin({
-      outFile: file => `${CSSPath}/${file}`,
+      outFile: file => `${dist}/${file}`,
       inject: file => `${file}`
     }),
     BabelPlugin({}),
@@ -55,7 +58,9 @@ Sparky.task(
   'remove-dist',
   () =>
     new Promise((resolve, reject) => {
-      rimraf('dist', () => resolve());
+      rimraf('dist/*.js', () =>
+        rimraf('dist/*.js.map', () => rimraf('dist/styles/*', () => resolve()))
+      );
     })
 );
 
@@ -63,6 +68,15 @@ Sparky.task('default', ['dev'], () => {});
 
 Sparky.task('dev', () => {
   fuse.dev({ port: 8080 });
+  // fuse.dev({ root: false }, server => {
+  //   const dist = path.resolve('./dist');
+  //   const app = server.httpServer.app;
+  //   app.get('*', function (req, res) {
+  //     res.sendFile(path.join(dist, 'index.html'));
+  //   });
+  //   app.set('port', 8080);
+  //   app.listen(8080);
+  // });
   fuse.bundle('app').watch().hmr().instructions('> index.js');
   fuse.run();
 });
