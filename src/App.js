@@ -1,5 +1,8 @@
 // @flow
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
+
+import Store from './store';
 
 import AppRouter from './router';
 
@@ -8,8 +11,9 @@ import AppRouter from './router';
  * @class App
  * @extends {Component}
  */
+@observer
 export default class App extends Component {
   render () {
-    return <AppRouter />;
+    return <AppRouter store={Store} />;
   }
 }
