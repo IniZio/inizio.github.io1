@@ -9,5 +9,7 @@
 [libs]
 
 [options]
+unsafe.enable_getters_and_setters=true
+experimental.strict_type_args=false
 module.name_mapper='.*\(.css\)' -> 'empty/object'
 module.name_mapper='.*\(.scss\)' -> 'empty/object'
