@@ -11,3 +11,4 @@ out.js
 .idea/
 sourcemaps.js.map
 .fusebox
+*.log

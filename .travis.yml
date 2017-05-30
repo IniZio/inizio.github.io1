@@ -4,7 +4,7 @@ branches:
 
 language: node_js
 
-sudo: true
+sudo: false
 
 node_js: stable
 
@@ -30,5 +30,7 @@ after_script:
   # - echo "inizio.github.io" > CNAME
   - cp index.html 404.html
   - git add --all .
+  - git status
   - git commit --message "Automatically update from travis-ci"
-  - git push "https://${GH_TOKEN}@${GH_REF}" master:master --quiet  > /dev/null 2>&1
+  # - git push "https://${GH_TOKEN}@${GH_REF}" master:master --quiet  > /dev/null 2>&1
+  - git push "https://${GH_TOKEN}@${GH_REF}" master:master
