@@ -23,8 +23,8 @@ export class Post {
 
   @computed get title (): string {
     return this.name
-      .replace(/\.md$/, '')
-      .replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '');
+      ? this.name.replace(/\.md$/, '').replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '')
+      : '';
   }
   @computed get date (): string {
     return /^\d{4}-\d{1,2}-\d{1,2}/.exec(this.name)
@@ -62,6 +62,7 @@ export class Post {
           headers: { Accept: 'application/vnd.github.v3.raw' }
         }).then(res => {
           post = fm(res.data);
+          console.log(post);
           Object.assign(this, post);
           window.sessionStorage &&
             window.sessionStorage.setItem(cacheKey, JSON.stringify(post));

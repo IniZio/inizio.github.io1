@@ -11,18 +11,26 @@ export default class PostDetail extends Component {
     location: Object,
     history: Object
   };
+  static defaultProps = {
+    post: new Post({ sha: '' })
+  };
   componentDidMount () {
-    if (!this.props.post) {
-      this.props.post = new Post({ sha: this.props.match.params['sha'] });
+    if (!this.props.post.sha) {
+      this.props.post.sha = this.props.match.params['sha'];
     }
-    console.log(this.props.post);
-    this.props.post.fetchDetail().then(() => console.log(this.props.post));
+    this.props.post.fetchDetail();
   }
   render () {
     return (
       <div>
-        <h1>{this.props.post.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: this.props.post.html }} />
+        {this.props.post.sha
+          ? <div>
+              <h1>{this.props.post.title}</h1>
+              <article
+                dangerouslySetInnerHTML={{ __html: this.props.post.html }}
+              />
+            </div>
+          : null}
       </div>
     );
   }
