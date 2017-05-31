@@ -32,6 +32,7 @@
         "babel-preset-flow": "^6.23.0",
         "babel-preset-latest": "^6.16.0",
         "cross-env": "^5.0.0",
+        "express": "^4.15.3",
         "fuse-box": "^2.0.0",
         "node-sass": "^4.5.3",
         "rimraf": "^2.6.1",

@@ -12,10 +12,10 @@ const {
 const rimraf = require('rimraf');
 const fs = require('fs');
 const path = require('path');
-// const express = require('express');
+const express = require('express');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const dist = path.resolve('./dist');
+const dist = path.resolve(__dirname, './dist');
 
 /**
  * Fuse options
@@ -67,16 +67,16 @@ Sparky.task(
 Sparky.task('default', ['dev'], () => {});
 
 Sparky.task('dev', () => {
-  fuse.dev({ port: 8080 });
-  // fuse.dev({ root: false }, server => {
-  //   const dist = path.resolve('./dist');
-  //   const app = server.httpServer.app;
-  //   app.get('*', function (req, res) {
-  //     res.sendFile(path.join(dist, 'index.html'));
-  //   });
-  //   app.set('port', 8080);
-  //   app.listen(8080);
-  // });
+  // fuse.dev({ port: 8080 });
+  fuse.dev({ root: false }, server => {
+    const app = server.httpServer.app;
+    app.use('/', express.static(dist));
+    app.get('*', function (req, res) {
+      res.sendFile(path.join(dist, 'index.html'));
+    });
+    app.set('port', 8080);
+    app.listen(8080);
+  });
   fuse.bundle('app').watch().hmr().instructions('> index.js');
   fuse.run();
 });
