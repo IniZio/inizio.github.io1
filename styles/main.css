@@ -57,7 +57,8 @@
  *
  * Type: String
  */
-@import url("https://fonts.googleapis.com/css?family=Questrial|Titillium+Web:300");
+@import url(https://fonts.googleapis.com/css?family=Questrial|Titillium+Web:300);
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
 /**
  * The base value the scale starts at.
  *
@@ -154,6 +155,9 @@ main {
 
  * Opinionated and disabled by default.
  */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit; }
+
 /**
  * Applies a bold font weight to strong instead of the default bolder
  */
@@ -199,10 +203,19 @@ a {
 
 body {
   font-family: "Questrial", "san-serif";
-  color: #55585e; }
+  font-size: 16px;
+  line-height: 1.7; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Questrial", "Titillium Web", "san-serif";
+  font-weight: normal;
+  font-size: 125%; }
+
+body {
+  color: #55585e;
+  overflow-y: scroll; }
+
+h1, h2, h3, h4, h5, h6 {
   color: #000; }
 
 /**
@@ -889,5 +902,23 @@ h1, h2, h3, h4, h5, h6 {
  *
  * Type: String
  */
+.c-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%; }
+
+.c-list {
+  min-height: 400px;
+  overflow: auto; }
+
+.c-searchbar__input {
+  background: #eee;
+  border: none;
+  border-radius: 2px;
+  padding: 4px; }
+  .c-searchbar__input:focus {
+    outline: none; }
 
 /*# sourceMappingURL=main.scss.map */
