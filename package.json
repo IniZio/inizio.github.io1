@@ -1,7 +1,7 @@
 {
-    "name": "react-example",
+    "name": "react-ghpages-blog",
     "version": "1.0.0",
-    "description": "",
+    "description": "Blog based on github pages using React + fuse-box",
     "main": "index.js",
     "scripts": {
         "start": "node fuse.js",
@@ -9,7 +9,7 @@
         "build": "cross-env NODE_ENV=production node fuse.js build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "",
+    "author": "IniZio",
     "license": "ISC",
     "dependencies": {
         "axios": "^0.16.1",
@@ -20,6 +20,7 @@
         "mobx-react": "^4.1.8",
         "react": "^15.4.1",
         "react-dom": "^15.4.1",
+        "react-list": "^0.8.6",
         "react-router-dom": "^4.1.1"
     },
     "devDependencies": {

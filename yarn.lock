@@ -2268,7 +2268,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@15, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -2322,6 +2322,12 @@ react-dom@^15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
     prop-types "~15.5.7"
+
+react-list@^0.8.6:
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/react-list/-/react-list-0.8.6.tgz#21c88eb332829a0b448c2502eb43064f11af38fe"
+  dependencies:
+    prop-types "15"
 
 react-router-dom@^4.1.1:
   version "4.1.1"

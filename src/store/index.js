@@ -95,9 +95,9 @@ export class PostStore {
         resolve(posts);
       } else {
         Axios.get(getListUrl()).then(res => {
-          const posts = res.data.map(
-            els => new Post(objReduce(els, ['name', 'sha', 'size']))
-          );
+          const posts = res.data
+            .reverse()
+            .map(els => new Post(objReduce(els, ['name', 'sha', 'size'])));
           // Save into sessionStorage
           window.sessionStorage &&
             window.sessionStorage.setItem('posts', JSON.stringify(posts));
