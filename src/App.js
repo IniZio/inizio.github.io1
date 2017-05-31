@@ -13,7 +13,12 @@ import AppRouter from './router';
  */
 @observer
 export default class App extends Component {
-  render () {
-    return <AppRouter store={Store} />;
+  render() {
+    return (
+      <div className="o-container">
+        <div className="c-app-header u-text-center"><h1>IniZio</h1></div>
+        <AppRouter store={Store} />
+      </div>
+    );
   }
 }

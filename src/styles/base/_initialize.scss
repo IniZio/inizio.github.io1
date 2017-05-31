@@ -6,7 +6,6 @@
 
 $iota-base-initialize-box-sizing: 'border-box';
 
-
 /**
  * Makes all heading tags ( h1 - h6 ) to be equal
  * to your body size.  It forces you to use heading
@@ -16,8 +15,7 @@ $iota-base-initialize-box-sizing: 'border-box';
  * Type: Boolean
  */
 
-$iota-base-initialize-heading-size: false;
-
+$iota-base-initialize-heading-size: true;
 
 /**
  * Enables normalize and resets for the HTML4 form
@@ -28,7 +26,6 @@ $iota-base-initialize-heading-size: false;
 
 $iota-base-initialize-form-elements: false;
 
-
 /**
  * Enables normalize and resets for the HTML5 form
  * elements
@@ -37,6 +34,4 @@ $iota-base-initialize-form-elements: false;
  */
 
 $iota-base-initialize-html5-form-elements: false;
-
-
 @import 'node_modules/iotacss/base/initialize';

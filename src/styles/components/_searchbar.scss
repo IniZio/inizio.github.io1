@@ -1,0 +1,11 @@
+.c-searchbar {}
+
+.c-searchbar__input {
+  background: #eee;
+  border: none;
+  border-radius: 2px;
+  padding: 4px;
+  &:focus {
+    outline: none
+  }
+}
