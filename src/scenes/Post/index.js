@@ -23,14 +23,22 @@ export default class PostDetail extends Component {
   render () {
     return (
       <div>
-        {this.props.post.sha
+        {this.props.post.body
           ? <div>
               <h1>{this.props.post.title}</h1>
               <article
                 dangerouslySetInnerHTML={{ __html: this.props.post.html }}
               />
             </div>
-          : null}
+          : <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <p>Loading...</p>
+            </div>}
       </div>
     )
   }
