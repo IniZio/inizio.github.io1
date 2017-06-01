@@ -1,14 +1,14 @@
 // @flow
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class SearchBar extends Component {
-  changeKeyword = ({ target }) => {
-    this.props.onKeywordChange(target.value);
+  changeKeyword = ({ target }: Event) => {
+    this.props.onKeywordChange(target.value)
   };
-  handleKeyPress = e => {
-    console.log(e.key);
+  handleKeyPress = (e: Event) => {
+    console.log(e.key)
   };
-  render() {
+  render () {
     return (
       <div className="c-searchbar u-text-center">
         <input
@@ -19,6 +19,6 @@ export default class SearchBar extends Component {
           onKeyPress={this.handleKeyPress}
         />
       </div>
-    );
+    )
   }
 }

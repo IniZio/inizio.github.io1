@@ -1,12 +1,12 @@
 // @flow
-import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
+import { Link } from 'react-router-dom'
 // import ReactList from 'react-list';
 
-import { PostStore } from '../../store';
+import { PostStore } from '../../store'
 
-import SearchBar from './components/SearchBar';
+import SearchBar from './components/SearchBar'
 
 /**
  * @export
@@ -21,11 +21,11 @@ export default class List extends Component {
   state = {
     keyword: ''
   };
-  componentDidMount() {
-    this.props.postStore.fetchList();
+  componentDidMount () {
+    this.props.postStore.fetchList()
   }
   handleKeywordChange = (keyword: string) => {
-    this.setState({ keyword });
+    this.setState({ keyword })
   };
   /* renderPost = (index: number, key: number) => {
     const post = this.props.postStore.posts.filter(post =>
@@ -37,13 +37,13 @@ export default class List extends Component {
       </div>
     );
   }; */
-  render() {
+  render () {
     const posts = this.props.postStore.posts.filter(post =>
       post.title
         .toLowerCase()
         .replace(' ', '')
         .match(this.state.keyword.toLowerCase().replace(' ', ''))
-    );
+    )
     return (
       <div className="c-scene-list">
         <SearchBar onKeywordChange={this.handleKeywordChange} />
@@ -64,6 +64,6 @@ export default class List extends Component {
           ))}
         </div>
       </div>
-    );
+    )
   }
 }

@@ -7,15 +7,15 @@ import Post from './scenes/Post';
 export default ({ store }) => {
   const supportsHistory = 'pushState' in window.history;
   return (
-    <Router basename='/' forceRefresh={!supportsHistory}>
+    <Router basename="/" forceRefresh={!supportsHistory}>
       <div>
         <Route
           exact
-          path='/'
+          path="/"
           component={() => <List postStore={store.postStore} />}
         />
         <Route
-          path='/post/:sha'
+          path="/post/:sha"
           component={props => (
             <Post
               {...props}

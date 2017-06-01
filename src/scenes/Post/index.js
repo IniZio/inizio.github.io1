@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
 
-import { Post } from '../../store';
+import { Post } from '../../store'
 
 @observer
 export default class PostDetail extends Component {
@@ -16,9 +16,9 @@ export default class PostDetail extends Component {
   };
   componentDidMount () {
     if (!this.props.post.sha) {
-      this.props.post.sha = this.props.match.params['sha'];
+      this.props.post.sha = this.props.match.params['sha']
     }
-    this.props.post.fetchDetail();
+    this.props.post.fetchDetail()
   }
   render () {
     return (
@@ -32,6 +32,6 @@ export default class PostDetail extends Component {
             </div>
           : null}
       </div>
-    );
+    )
   }
 }

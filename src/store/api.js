@@ -3,21 +3,21 @@
 
 // TODO: Make them as computed / use lodash  values function
 // import { objReduce, onlyDate, onlyTitle } from '../util';
-import conf from '../repo.json';
+import conf from '../repo.json'
 
 /**
  * Get list url
  * @returns {string}
  */
 export const getListUrl = (): string =>
-  `https://api.github.com/repos/${conf.repo}/contents/${conf.path ? conf.path : ''}?${conf.branch ? 'ref=' + conf.branch : ''}`;
+  `https://api.github.com/repos/${conf.repo}/contents/${conf.path ? conf.path : ''}?${conf.branch ? 'ref=' + conf.branch : ''}`
 /**
  * Get post url from hash
  * @param {string} hash
  * @returns {string}
  */
 export const getPostUrl = (hash: string): string =>
-  `https://api.github.com/repos/${conf.repo}/git/blobs/${hash}`;
+  `https://api.github.com/repos/${conf.repo}/git/blobs/${hash}`
 
 // /**
 //  * Get posts list

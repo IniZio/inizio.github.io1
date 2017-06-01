@@ -7,10 +7,14 @@
         "start": "node fuse.js",
         "dev": "cross-env NODE_ENV=development node fuse.js dev",
         "build": "cross-env NODE_ENV=production node fuse.js build",
+        "lint": "./node_modules/.bin/eslint",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "IniZio",
     "license": "ISC",
+    "optionalDependencies": {
+        "eslint": "^3.19.0"
+    },
     "dependencies": {
         "axios": "^0.16.1",
         "front-matter": "^2.1.2",
@@ -25,6 +29,7 @@
     },
     "devDependencies": {
         "babel-core": "^6.20.0",
+        "babel-eslint": "^7.2.3",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-plugin-transform-decorators": "^6.24.1",
         "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -33,6 +38,8 @@
         "babel-preset-flow": "^6.23.0",
         "babel-preset-latest": "^6.16.0",
         "cross-env": "^5.0.0",
+        "eslint-plugin-react": "^7.0.1",
+        "eslint-plugin-standard": "^3.0.1",
         "express": "^4.15.3",
         "fuse-box": "^2.0.0",
         "node-sass": "^4.5.3",

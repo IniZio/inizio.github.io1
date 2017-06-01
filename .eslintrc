@@ -1,0 +1,13 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["standard"],
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "no-unused-vars": "off",
+        "indent": ["warn", 2],
+        "jsx-quotes": ["error", "prefer-double"],
+        "space-before-function-paren": ["error", "always"]
+    }
+}
