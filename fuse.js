@@ -34,10 +34,7 @@ const fuse = new FuseBox({
     }),
     [
       SassPlugin(),
-      CSSPlugin({
-        outFile: file => `${dist}/${file.replace('scss', 'css')}`,
-        inject: file => `${file.replace('scss', 'css')}`
-      })
+      CSSPlugin()
     ],
     CSSPlugin({
       outFile: file => `${dist}/${file}`,
