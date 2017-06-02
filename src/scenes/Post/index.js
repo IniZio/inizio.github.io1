@@ -18,7 +18,9 @@ export default class PostDetail extends Component {
     if (!this.props.post.sha) {
       this.props.post.sha = this.props.match.params['sha']
     }
-    this.props.post.fetchDetail()
+    this.props.post.fetchDetail().then(() => {
+      window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub])
+    })
   }
   render () {
     return (
