@@ -67,7 +67,9 @@ export class Post {
         }).then(res => {
           post = fm(res.data)
           if (!this.name && post.attributes.date && post.attributes.title) {
-            post.name = `${post.attributes.date.substring(0, 10)}-${post.attributes.title}.md`
+            post.name = `${post.attributes.date
+              .toISOString()
+              .substring(0, 10)}-${post.attributes.title}.md`
           }
           Object.assign(this, post)
           window.sessionStorage &&
