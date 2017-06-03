@@ -32,10 +32,7 @@ const fuse = new FuseBox({
       title: 'IniZio',
       template: 'src/tpl.html'
     }),
-    [
-      SassPlugin(),
-      CSSPlugin()
-    ],
+    [SassPlugin(), CSSPlugin()],
     CSSPlugin({
       outFile: file => `${dist}/${file}`,
       inject: file => `${file}`
@@ -61,24 +58,26 @@ Sparky.task(
     })
 )
 
+Sparky.task('favicon', () => Sparky.src('favicon.png').dest('dist/$name'))
+
 Sparky.task('default', ['dev'], () => {})
 
-Sparky.task('dev', () => {
+Sparky.task('dev', ['favicon'], () => {
   // fuse.dev({ port: 8080 });
-  fuse.dev({ root: false }, server => {
+  fuse.dev({ root: false, port: 8080 }, server => {
     const app = server.httpServer.app
     app.use('/', express.static(dist))
     app.get('*', function (req, res) {
       res.sendFile(path.join(dist, 'index.html'))
     })
-    app.set('port', 8080)
-    app.listen(8080)
+    app.set('port', 8081)
+    app.listen(8081)
   })
   fuse.bundle('app').watch().hmr().instructions('> index.js')
   fuse.run()
 })
 
-Sparky.task('build', ['remove-dist'], () => {
+Sparky.task('build', ['remove-dist', 'favicon'], () => {
   fuse.bundle('vendor').instructions('~ index.js')
   fuse.bundle('app').instructions('!> [index.js]')
   fuse.run()
