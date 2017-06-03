@@ -56,6 +56,9 @@ export class Post {
         window.sessionStorage && window.sessionStorage.hasOwnProperty(cacheKey)
       ) {
         post = JSON.parse(window.sessionStorage.getItem(cacheKey))
+        if (!this.name && post.attributes.date && post.attributes.title) {
+          post.name = `${post.attributes.date.substring(0, 10)}-${post.attributes.title}.md`
+        }
         Object.assign(this, post)
         resolve(this)
       } else {
@@ -63,7 +66,9 @@ export class Post {
           headers: { Accept: 'application/vnd.github.v3.raw' }
         }).then(res => {
           post = fm(res.data)
-          console.log(post)
+          if (!this.name && post.attributes.date && post.attributes.title) {
+            post.name = `${post.attributes.date.substring(0, 10)}-${post.attributes.title}.md`
+          }
           Object.assign(this, post)
           window.sessionStorage &&
             window.sessionStorage.setItem(cacheKey, JSON.stringify(post))
