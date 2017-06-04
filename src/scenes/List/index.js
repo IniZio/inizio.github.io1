@@ -27,16 +27,6 @@ export default class List extends Component {
   handleKeywordChange = (keyword: string) => {
     this.setState({ keyword })
   };
-  /* renderPost = (index: number, key: number) => {
-    const post = this.props.postStore.posts.filter(post =>
-      post.title.match(this.state.keyword)
-    )[index];
-    return (
-      <div key={key} className='c-list__item'>
-        <Link to={`post/${post.sha}`}>{post.title}</Link>
-      </div>
-    );
-  }; */
   render () {
     const posts = this.props.postStore.posts.filter(post =>
       post.title
@@ -48,20 +38,25 @@ export default class List extends Component {
       <div className="c-scene-list">
         <SearchBar onKeywordChange={this.handleKeywordChange} />
         <div className="c-list">
-          {/* <ReactList
-            pageSize={5}
-            itemRenderer={this.renderPost}
-            length={
-              posts.filter(post =>
-                post.title.toLowerCase().match(this.state.keyword.toLowerCase())
-              ).length
-            }
-          /> */}
-          {posts.map(post => (
-            <div key={post.sha} className="c-list__item">
-              <Link to={`post/${post.sha}`}>{post.title}</Link>
-            </div>
-          ))}
+          {posts
+            ? posts.map(post => (
+                <li key={post.sha} className="c-list__item">
+                  <Link to={`post/${post.sha}`}>
+                    {post.title}
+                  </Link>
+                  <br />
+                  {/* <span className="c-list__item-date">{post.date}</span> */}
+                </li>
+              ))
+            : <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <p>Loading...</p>
+              </div>}
         </div>
       </div>
     )
