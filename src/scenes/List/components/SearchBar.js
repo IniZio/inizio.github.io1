@@ -1,23 +1,49 @@
 // @flow
 import React, { Component } from 'react'
+import { setParam } from '../../../util'
+import queryString from 'query-string'
 
 export default class SearchBar extends Component {
+  state = {
+    keyword: queryString.parse(window.location.search)['keyword']
+  };
   componentDidMount () {
     document.addEventListener('keydown', (e: Event) => {
-      console.log(e.keyCode)
       if (e.keyCode === 191) {
-        this.searchInput.focus()
-      } else if (e.keyCode === 27) {
-        this.clearSearch()
+        // when press '/'
+        !!this.searchInput && this.searchInput.focus()
       }
     })
   }
-  changeKeyword = ({ target }: Event) => {
-    if (target.value[0] === '/') this.clearSearch()
-    this.props.onKeywordChange(target.value)
+  componentDidUpdate (prevProps: Object, prevState: Object) {
+    if (this.state.keyword !== prevState.keyword) {
+      this.changeKeyword(this.state.keyword)
+    }
+  }
+  changeKeyword = (keyword: string) => {
+    // clear keyword if has '/'
+    if (keyword.includes('/')) {
+      keyword = ''
+      this.clearSearch()
+    }
+    // update url keyword param if browser supports replacestate
+    if (window.history.replaceState) {
+      const newUrl = setParam(window.location.href, 'keyword', keyword)
+      // prevents browser from storing history with each change:
+      window.history.replaceState(keyword, 'IniZio', newUrl)
+    }
+    this.props.onKeywordChange(keyword)
   };
   clearSearch = () => {
-    this.searchInput.value = ''
+    this.setState({ keyword: '' })
+    if (window.history.replaceState) {
+      // prevents browser from storing history with each change:
+      window.history.replaceState(
+        '',
+        'IniZio',
+        window.location.href.split('?')[0]
+      )
+    }
     this.props.onKeywordChange('')
   };
   render () {
@@ -30,7 +56,8 @@ export default class SearchBar extends Component {
           className="c-searchbar__input"
           name="keyword"
           placeholder="Type / to start searching"
-          onChange={this.changeKeyword}
+          value={this.state.keyword}
+          onChange={({ target }) => this.setState({ keyword: target.value })}
         />
       </div>
     )
