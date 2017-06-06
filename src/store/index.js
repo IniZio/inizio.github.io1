@@ -6,7 +6,17 @@ import fm from 'front-matter'
 import { objReduce, capitalize } from '../util'
 import { getListUrl, getPostUrl } from './api'
 
-const markdownIt = require('markdown-it')({})
+const markdownIt = require('markdown-it')({
+  highlight: function (str, lang) {
+    if (lang) {
+      try {
+        return '<pre class="code"><code>' + str + '</code></pre>'
+      } catch (__) {}
+    }
+
+    return '<pre class="code"><code>' + str + '</code></pre>'
+  }
+})
 
 export class Post {
   @observable name: string;

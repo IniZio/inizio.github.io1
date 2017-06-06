@@ -1,6 +1,13 @@
 .c-list {
   min-height: 400px;
   overflow: auto;
+  // list-style-type: none;
 }
 
 .c-list__item {}
+
+.c-list__item-date {
+  font-size: 75%;
+  margin-left: auto;
+  right: 0;
+}

@@ -3,6 +3,7 @@ const {
   Sparky,
   SVGPlugin,
   CSSPlugin,
+  CSSResourcePlugin,
   BabelPlugin,
   JSONPlugin,
   UglifyJSPlugin,
@@ -32,7 +33,7 @@ const fuse = new FuseBox({
       title: 'IniZio',
       template: 'src/tpl.html'
     }),
-    [SassPlugin(), CSSPlugin()],
+    [SassPlugin(), CSSResourcePlugin(), CSSPlugin()],
     CSSPlugin({
       outFile: file => `${dist}/${file}`,
       inject: file => `${file}`
