@@ -23,6 +23,7 @@ install:
   - yarn
 
 script:
+  - npm run lint
   - npm run build
 
 after_script:

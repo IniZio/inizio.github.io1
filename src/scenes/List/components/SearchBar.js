@@ -8,7 +8,7 @@ export default class SearchBar extends Component {
     keyword: queryString.parse(window.location.search)['keyword']
   };
   componentDidMount () {
-    document.addEventListener('keydown', (e: Event) => {
+    document.addEventListener('keydown', (e: any) => {
       if (e.keyCode === 191) {
         // when press '/'
         !!this.searchInput && this.searchInput.focus()
