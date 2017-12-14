@@ -1,0 +1,35 @@
+branches:
+  only:
+    - develop
+
+language: node_js
+
+sudo: false
+
+node_js: 6.10.0
+
+cache:
+  directories:
+  - node_modules
+
+before_install:
+  - rm -rf dist/
+  - git config --global user.name "${GH_NAME}"
+  - git config --global user.email "${GH_EMAIL}"
+  - git clone --branch master https://${GH_REF} dist
+  - npm i -g yarn --cache-min 999999999
+
+install:
+  - yarn
+
+script:
+  - npm run lint
+  - npm run build
+
+after_script:
+  - cd dist
+  - cp index.html 404.html
+  - git add --all .
+  - git status
+  - git commit --message "Automatic update from travis-ci"
+  - git push "https://${GH_TOKEN}@${GH_REF}" master:master --quiet  > /dev/null 2>&1

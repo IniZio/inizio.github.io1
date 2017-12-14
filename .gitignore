@@ -1,0 +1,13 @@
+.project
+.settings
+node_modules/
+.language-cache/
+.vscode/
+dist/
+out.js
+.DS_Store
+.tmp/
+.idea/
+sourcemaps.js.map
+.fusebox
+*.log
