@@ -15,4 +15,6 @@ module.exports = async clipped => {
         .end()
       .use('marko')
         .loader('marko-loader')
+
+  console.log(clipped.config.webpack.toConfig().module.rules)
 }

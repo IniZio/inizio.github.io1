@@ -1,0 +1,16 @@
+class {
+  onCreate () {
+    this.state = {
+      keyword: 'Hello'
+    }
+  }
+  handleKeywordChange ({target: {value}}) {
+    this.setState('keyword', value)
+    this.emit('change', {keyword: value})
+  }
+}
+
+<form class="uk-search uk-search-default">
+  <span uk-search-icon></span>
+    <input class="uk-search-input" type="search" placeholder="" value=state.keyword on-input('handleKeywordChange')>
+</form>

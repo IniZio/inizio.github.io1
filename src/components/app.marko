@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/css/uikit.min.css" />
+
+class {
+  onCreate () {
+    this.state = {
+      count: 0
+    }
+  }
+  increment () {
+    this.state.count++
+  }
+  handleKeywordChange ({keyword}) {
+    console.log('search bar: ', keyword)
+  }
+}
+
+div class="uk-position-top-center"
+  search-bar on-change("handleKeywordChange")
